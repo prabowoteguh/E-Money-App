@@ -38,6 +38,7 @@
                <script src="<?= BASE_URL ?>assets/scripts/main.js"></script>
                <!-- Sweetallert 2 -->
                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-               <!-- <script src="<?= BASE_URL ?>../app/confjs/login.js"></script> -->
+               <!-- Function JS -->
+               <script src="<?= BASE_URL ?>../app/confjs/superadmin.js"></script>
 
                </html>

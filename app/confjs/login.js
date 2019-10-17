@@ -18,7 +18,7 @@ $('#btn_login').on('click', function (e) {
         });
     } else {
         $.ajax({
-            url: "http://localhost:8080/API/public/login/",
+            url: "http://e-money-app.epizy.com/public/login/",
             type: "POST",
             dataType: "JSON",
             data: {
