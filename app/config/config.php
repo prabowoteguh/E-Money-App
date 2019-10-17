@@ -1,7 +1,10 @@
 <?php
 
 /* ===== URI CONFIG ===== */
-define('BASE_URL', 'http://localhost:8080/OOP/public/');
+define('BASE_URL', 'http://localhost:8080/E-Money-App/public/');
+
+/* ===== URL API ===== */
+define('API_URL', 'http://localhost:8080/E-Money-App/public/');
 
 /* ===== DATABASE CONFIG ===== */
 define('DB_HOST', 'sql301.epizy.com');

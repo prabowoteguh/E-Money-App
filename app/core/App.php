@@ -3,7 +3,7 @@
 class App
 {
     // untuk set default controller dan route
-    protected $controller = 'HomeController';
+    protected $controller = 'LoginController';
     protected $method = 'index';
     protected $param = [];
 
