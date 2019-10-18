@@ -148,6 +148,10 @@ $('#master_role').on('click', function () {
         }
 
     });
+
+    $('#btn_simpan_role').on('click', function () {
+        console.log('OK');
+    });
 });
 
 $('#master_users').on('click', function () {
