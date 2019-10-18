@@ -1,13 +1,13 @@
 <?php
 
 /* ===== URI CONFIG ===== */
-define('BASE_URL', 'http://localhost:8080/E-Money-App/public/');
+define('BASE_URL', 'http://192.168.100.80:8080/E-Money-App/public/');
 
 /* ===== URL API ===== */
-define('API_URL', 'http://e-money-app.epizy.com/public/');
+define('API_URL', 'http://192.168.100.80:8080/API-E-Money-App/public/');
 
 /* ===== DATABASE CONFIG ===== */
-define('DB_HOST', 'sql301.epizy.com');
-define('DB_USER', 'epiz_23826897');
-define('DB_PASS', '7U9Tvfpx');
-define('DB_NAME', 'epiz_23826897_kompreApp');
+define('DB_HOST', '192.168.43.180');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'db_kompre');
