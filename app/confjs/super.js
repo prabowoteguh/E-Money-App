@@ -164,6 +164,8 @@ $('#master_mahasiswa').on('click', function () {
     $('#title_page').text('Master Data Mahasiswa');
     $('#content').html('');
 
+    
+
 });
 
 $('#master_produk').on('click', function () {
