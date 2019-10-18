@@ -168,8 +168,181 @@ $('#master_mahasiswa').on('click', function () {
     $('#title_page').text('Master Data Mahasiswa');
     $('#content').html('');
 
-    
+     $.ajax({
+        url: "http://192.168.100.80:8080/API-E-Money-App/public/mahasiswas/show/",
+        type: "GET",
+        dataType: "JSON",
+        data: {
+            // 
+        },
+        success: function (r) {
+            if (r.Status_Code == 200) {
+                var data = r.role;
+                var table = '';
 
+                for (let i = 0; i < data.length; i++) {
+                    table += `
+                        <tr>
+                            <td class="text-center text-muted"> #` + (i + 1) + `</td>
+                            <td>` + data[i].Mahasiswa_Npm + `</td> 
+                            <td>` + data[i].Mahasiswa_Nama + `</td> 
+                            <td>` + data[i].Mahasiswa_Jurusan + `</td> 
+                            <td>` + data[i].Mahasiswa_Tahun_Angkatan + `</td> 
+                            <td>` + data[i].Mahasiswa_Foto + `</td>
+                            <td>` + data[i].Mahasiswa_Created_By + `</td>  
+                            <td class="text-center">
+                                <div class="badge badge-` + ((data[i].Mahasiswa_Deleted_Status == 0) ? 'success' : 'danger') + `">` + ((data[i].Mahasiswa_Deleted_Status == 0) ? 'Aktif' : 'Terhapus') + `</div>
+                            </td> 
+                            <td class="text-center">
+                                <button type="button" id="edit_mahasiswa" data-idMahasiswa="` + data[i].Mahasiswa_Id + `" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Edit</button>
+                                <button type="button" id="hapus_mahasiswa" data-idMahasiswa="` + data[i].Mahasiswa_Id + `" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>
+                            </td> 
+                        </tr>
+
+                    `;
+                }
+
+                $('#content').html(`
+                    <div class="row">
+                    <div class="col-md-12">
+                        <div class="main-card mb-3 card">
+                            <div class="card-header">Data Mahasiswa
+                                <div class="btn-actions-pane-right">
+                                    <div role="group" class="btn-group-sm btn-group">
+                                        <button class="btn btn-success" data-backdrop="false" data-toggle="modal" data-target="#modal_tambah_mahasiswa"><i class="fa fa-plus"></i> Tambah</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="align-middle mb-0 table  table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="text-center">#</th>
+                                            <th scope="col">NPM</th>
+                                            <th scope="col">Nama</th>
+                                            <th scope="col">Jurusan</th>
+                                            <th scope="col">Angkatan</th>
+                                            <th scope="col">URL Foto</th>
+                                            <th scope="col">Created By</th>
+                                            <th scope="col"  class="text-center">Status</th>
+                                            <th scope="col" class="text-center">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ` + table + `
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th scope="col" class="text-center">#</th>
+                                            <th scope="col">NPM</th>
+                                            <th scope="col">Nama</th>
+                                            <th scope="col">Jurusan</th>
+                                            <th scope="col">Angkatan</th>
+                                            <th scope="col">URL Foto</th>
+                                            <th scope="col">Created By</th>
+                                            <th scope="col"  class="text-center">Status</th>
+                                            <th scope="col" class="text-center">Aksi</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="d-block text-center card-footer">
+                                <div class="text-center"> <h5></h5> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Tambah Role -->
+                <div class="modal fade" id="modal_tambah_mahasiswa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tambah Mahasiswa</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label class="control-label" for="Mahasiswa_Npm">NPM</label>
+                                        <input type="number" name="Mahasiswa_Npm" class="form-control" id="Mahasiswa_Npm" required>
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label" for="Mahasiswa_Nama">Nama</label>
+                                        <input type="text" name="Mahasiswa_Nama" class="form-control" id="Mahasiswa_Nama" required>
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label" for="Mahasiswa_Jurusan">Jurusan</label>
+                                            <select name="jurusan" class="form-control">
+                                                <option value="-">-- Pilih --</option>
+                                                <option value="Akuntansi">Akuntansi</option>
+                                                <option value="Perpajakan">Perpajakan</option>
+                                                <option value="Manajemen Informatika">Manajemen Informatika</option>
+                                            </select>
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label" for="Mahasiswa_Tahun_Angkatan">Angkatan</label>
+                                        <input type="text" name="Mahasiswa_Tahun_Angkatan" class="form-control" id="Mahasiswa_Tahun_Angkatan" required>
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label" for="Mahasiswa_Foto">URL Foto</label>
+                                        <input type="file" name="Mahasiswa_Foto" class="form-control" id="Mahasiswa_Foto" required>
+                                    </div> 
+                                    <div class="form-group">
+                                        <label class="control-label" for="Mahasiswa_Created_By">Created By</label>
+                                        <input type="text" name="Mahasiswa_Created_By" class="form-control" id="Mahasiswa_Created_By" required>
+                                    </div> 
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                                    <button type="submit" id="btn_simpan_mahasiswa" class="btn btn-primary">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Modal Tambah Role -->
+
+                <script>
+                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                    (function() {
+                        'use strict';
+                        window.addEventListener('load', function() {
+                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                            var forms = document.getElementsByClassName('needs-validation');
+                            // Loop over them and prevent submission
+                            var validation = Array.prototype.filter.call(forms, function(form) {
+                                form.addEventListener('submit', function(event) {
+                                    if (form.checkValidity() === false) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                    }
+                                    form.classList.add('was-validated');
+                                }, false);
+                            });
+                        }, false);
+                    })();
+                </script>
+                `);
+
+
+            } else {
+                Swal.fire({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: r.Message
+                })
+            }
+        }
+
+    });
+
+    $('#btn_simpan_mahasiswa').on('click', function () {
+        console.log('OK');
+    });
 });
 
 $('#master_produk').on('click', function () {
