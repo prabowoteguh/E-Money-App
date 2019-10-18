@@ -20,28 +20,36 @@ class HomeController extends Controller
                 $this->view('superadmin/index', $data);
                 $this->view('templates/footer', $data);
             } else if ($_SESSION['data_user']->Role_Nama == 'Admin') {
-                $data['title'] = 'Dashboard | ';
+                $data['title'] = 'Dashboard | Admin';
+                $data['layout_option'] = $this->view('templates/layout_option');
+
                 $this->view('templates/header', $data);
                 $this->view('admin/index', $data);
                 $this->view('templates/footer', $data);
 
                 # code...
             } else if ($_SESSION['data_user']->Role_Nama == 'Akademik') {
-                $data['title'] = 'Dashboard | ';
+                $data['title'] = 'Dashboard | Akademik';
+                $data['layout_option'] = $this->view('templates/layout_option');
+
                 $this->view('templates/header', $data);
                 $this->view('akademik/index', $data);
                 $this->view('templates/footer', $data);
 
                 # code...
             } else if ($_SESSION['data_user']->Role_Nama == 'Admin Kantin') {
-                $data['title'] = 'Dashboard | ';
+                $data['title'] = 'Dashboard | Admin Kantin';
+                $data['layout_option'] = $this->view('templates/layout_option');
+
                 $this->view('templates/header', $data);
                 $this->view('kantin/index', $data);
                 $this->view('templates/footer', $data);
 
                 # code...
             } else if ($_SESSION['data_user']->Role_Nama == 'Keuangan') {
-                $data['title'] = 'Dashboard | ';
+                $data['title'] = 'Dashboard | Keuangan';
+                $data['layout_option'] = $this->view('templates/layout_option');
+
                 $this->view('templates/header', $data);
                 $this->view('keuangan/index', $data);
                 $this->view('templates/footer', $data);

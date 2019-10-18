@@ -18,7 +18,7 @@ $('#btn_login').on('click', function (e) {
         });
     } else {
         $.ajax({
-            url: "http://e-money-app.epizy.com/public/login/",
+            url: "http://192.168.100.80:8080/API-E-Money-App/public/login/",
             type: "POST",
             dataType: "JSON",
             data: {
@@ -48,3 +48,4 @@ $('#btn_login').on('click', function (e) {
     }
 });
 // ================= /LOGIN FUNCTION =================
+console.log('OK');

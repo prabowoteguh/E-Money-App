@@ -41,32 +41,32 @@
                 <ul class="vertical-nav-menu">
                     <li class="app-sidebar__heading">Dashboards</li>
                     <li>
-                        <a href="<?= BASE_URL ?>" class="mm-active">
+                        <a id="main_dashboard" href="<?= BASE_URL ?>" class="mm-active">
                             <i class="metismenu-icon  fa fa-rocket"></i>
                             Main Dashboard
                         </a>
                     </li>
                     <li class="app-sidebar__heading">Data Master</li>
                     <li>
-                        <a href="javascript:void(0);">
+                        <a id="master_role" href="javascript:void(0);">
                             <i class=" metismenu-icon fa fa-chart-pie"></i>
                             Master Role
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);">
+                        <a id="master_users" href="javascript:void(0);">
                             <i class=" metismenu-icon fa fa-users"></i>
                             Master Users
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);">
+                        <a id="master_mahasiswa" href="javascript:void(0);">
                             <i class="metismenu-icon fa fa-user"></i>
                             Master Mahasiswa
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);">
+                        <a id="master_produk" href="javascript:void(0);">
                             <i class="metismenu-icon fa fa-box"></i>
                             Master Products
                         </a>
@@ -207,13 +207,13 @@
 
                     <li class="app-sidebar__heading">Data Transaksi</li>
                     <li>
-                        <a href="dashboard-boxes.html">
+                        <a id="tr_penjualan" href="javascript:void(0);">
                             <i class="metismenu-icon fa fa-shopping-cart"></i>
                             Penjualan
                         </a>
                     </li>
                     <li>
-                        <a href="dashboard-boxes.html">
+                        <a id="tr_eMoney" href="javascript:void(0);">
                             <i class="metismenu-icon fa fa-wallet"></i>
                             Topup E-Money
                         </a>
@@ -221,19 +221,19 @@
 
                     <li class="app-sidebar__heading">Laporan</li>
                     <li>
-                        <a href="charts-chartjs.html">
+                        <a id="report_penjualan" href="javascript:void(0);">
                             <i class="metismenu-icon fa fa-chart-bar">
                             </i>Laporan Penjualan
                         </a>
                     </li>
                     <li>
-                        <a href="charts-chartjs.html">
+                        <a id="report_eMoney" href="javascript:void(0);">
                             <i class="metismenu-icon fa fa-chart-line">
                             </i>Laporan Topup E-Money
                         </a>
                     </li>
                     <li>
-                        <a href="charts-chartjs.html">
+                        <a id="cetak_kartu" href="javascript:void(0);">
                             <i class="metismenu-icon fa fa-id-card">
                             </i>Cetak Kartu Mahasiswa
                         </a>
@@ -257,7 +257,7 @@
                             <i class="fa fa-wallet icon-gradient bg-mean-fruit">
                             </i>
                         </div>
-                        <div>Dashboard | E-Money Apps
+                        <div><span id="title_page">Dashboard</span> | E-Money Apps
                             <div class="page-title-subheading">Sistem Informasi E-Money Politeknik Praktisi Bandung.
                             </div>
                         </div>
@@ -317,48 +317,49 @@
             </div>
             <!-- ======= /TITLE PAGE ======== -->
 
-            <!-- ======= DATA ANALYTIC ======== -->
-            <div class="row">
-                <div class="col-md-6 col-xl-4">
-                    <div class="card mb-3 widget-content bg-midnight-bloom">
-                        <div class="widget-content-wrapper text-white">
-                            <div class="widget-content-left">
-                                <div class="widget-heading">Total Pembelian</div>
-                                <div class="widget-subheading">Data tahun terakhir</div>
-                            </div>
-                            <div class="widget-content-right">
-                                <div class="widget-numbers text-white"><span>1896</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="card mb-3 widget-content bg-arielle-smile">
-                        <div class="widget-content-wrapper text-white">
-                            <div class="widget-content-left">
-                                <div class="widget-heading">Mahasiswa</div>
-                                <div class="widget-subheading">Total Mahasiswa</div>
-                            </div>
-                            <div class="widget-content-right">
-                                <div class="widget-numbers text-white"><span>568</span></div>
+            <div class="inner-content" id="content">
+                <!-- ======= DATA ANALYTIC ======== -->
+                <div class="row">
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card mb-3 widget-content bg-midnight-bloom">
+                            <div class="widget-content-wrapper text-white">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Total Pembelian</div>
+                                    <div class="widget-subheading">Data tahun terakhir</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers text-white"><span>1896</span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="card mb-3 widget-content bg-grow-early">
-                        <div class="widget-content-wrapper text-white">
-                            <div class="widget-content-left">
-                                <div class="widget-heading">Karyawan</div>
-                                <div class="widget-subheading">Total Karyawan</div>
-                            </div>
-                            <div class="widget-content-right">
-                                <div class="widget-numbers text-white"><span>46</span></div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card mb-3 widget-content bg-arielle-smile">
+                            <div class="widget-content-wrapper text-white">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Mahasiswa</div>
+                                    <div class="widget-subheading">Total Mahasiswa</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers text-white"><span>568</span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card mb-3 widget-content bg-grow-early">
+                            <div class="widget-content-wrapper text-white">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Karyawan</div>
+                                    <div class="widget-subheading">Total Karyawan</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers text-white"><span>46</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
                     <div class="card mb-3 widget-content bg-premium-dark">
                         <div class="widget-content-wrapper text-white">
                             <div class="widget-content-left">
@@ -371,217 +372,221 @@
                         </div>
                     </div>
                 </div> -->
-            </div>
-            <!-- ======= /DATA ANALYTIC ======== -->
+                </div>
+                <!-- ======= /DATA ANALYTIC ======== -->
 
-            <!-- ======= DATA ANALYTIC ======== -->
-            <div class="row">
-                <div class="col-md-6 col-xl-4">
-                    <div class="card mb-3 widget-content">
-                        <div class="widget-content-outer">
-                            <div class="widget-content-wrapper">
-                                <div class="widget-content-left">
-                                    <div class="widget-heading">Total TopUp E-Money</div>
-                                    <div class="widget-subheading">Transaksi topup per tahun terakhir</div>
+                <!-- ======= DATA ANALYTIC ======== -->
+                <div class="row">
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card mb-3 widget-content">
+                            <div class="widget-content-outer">
+                                <div class="widget-content-wrapper">
+                                    <div class="widget-content-left">
+                                        <div class="widget-heading">Total TopUp E-Money</div>
+                                        <div class="widget-subheading">Transaksi topup per tahun terakhir</div>
+                                    </div>
+                                    <div class="widget-content-right">
+                                        <div class="widget-numbers text-success">1896</div>
+                                    </div>
                                 </div>
-                                <div class="widget-content-right">
-                                    <div class="widget-numbers text-success">1896</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card mb-3 widget-content">
+                            <div class="widget-content-outer">
+                                <div class="widget-content-wrapper">
+                                    <div class="widget-content-left">
+                                        <div class="widget-heading">Produk Terjual</div>
+                                        <div class="widget-subheading">Data Penjualan Produk</div>
+                                    </div>
+                                    <div class="widget-content-right">
+                                        <div class="widget-numbers text-warning">$3M</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card mb-3 widget-content">
+                            <div class="widget-content-outer">
+                                <div class="widget-content-wrapper">
+                                    <div class="widget-content-left">
+                                        <div class="widget-heading">Produk</div>
+                                        <div class="widget-subheading">Total Produk</div>
+                                    </div>
+                                    <div class="widget-content-right">
+                                        <div class="widget-numbers text-danger">459</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
+                        <div class="card mb-3 widget-content">
+                            <div class="widget-content-outer">
+                                <div class="widget-content-wrapper">
+                                    <div class="widget-content-left">
+                                        <div class="widget-heading">Income</div>
+                                        <div class="widget-subheading">Expected totals</div>
+                                    </div>
+                                    <div class="widget-content-right">
+                                        <div class="widget-numbers text-focus">$147</div>
+                                    </div>
+                                </div>
+                                <div class="widget-progress-wrapper">
+                                    <div class="progress-bar-sm progress-bar-animated-alt progress">
+                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100" style="width: 54%;"></div>
+                                    </div>
+                                    <div class="progress-sub-label">
+                                        <div class="sub-label-left">Expenses</div>
+                                        <div class="sub-label-right">100%</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="card mb-3 widget-content">
-                        <div class="widget-content-outer">
-                            <div class="widget-content-wrapper">
-                                <div class="widget-content-left">
-                                    <div class="widget-heading">Produk Terjual</div>
-                                    <div class="widget-subheading">Data Penjualan Produk</div>
-                                </div>
-                                <div class="widget-content-right">
-                                    <div class="widget-numbers text-warning">$3M</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="card mb-3 widget-content">
-                        <div class="widget-content-outer">
-                            <div class="widget-content-wrapper">
-                                <div class="widget-content-left">
-                                    <div class="widget-heading">Produk</div>
-                                    <div class="widget-subheading">Total Produk</div>
-                                </div>
-                                <div class="widget-content-right">
-                                    <div class="widget-numbers text-danger">459</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-xl-none d-lg-block col-md-6 col-xl-4">
-                    <div class="card mb-3 widget-content">
-                        <div class="widget-content-outer">
-                            <div class="widget-content-wrapper">
-                                <div class="widget-content-left">
-                                    <div class="widget-heading">Income</div>
-                                    <div class="widget-subheading">Expected totals</div>
-                                </div>
-                                <div class="widget-content-right">
-                                    <div class="widget-numbers text-focus">$147</div>
-                                </div>
-                            </div>
-                            <div class="widget-progress-wrapper">
-                                <div class="progress-bar-sm progress-bar-animated-alt progress">
-                                    <div class="progress-bar bg-info" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100" style="width: 54%;"></div>
-                                </div>
-                                <div class="progress-sub-label">
-                                    <div class="sub-label-left">Expenses</div>
-                                    <div class="sub-label-right">100%</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /======= DATA ANALYTIC ======== -->
+                <!-- /======= DATA ANALYTIC ======== -->
 
-            <!-- ====== TABLE USERS ====== -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="main-card mb-3 card">
-                        <div class="card-header">Active Users
-                            <!-- <div class="btn-actions-pane-right">
-                                <div role="group" class="btn-group-sm btn-group">
-                                    <button class="active btn btn-focus">Last Week</button>
-                                    <button class="btn btn-focus">All Month</button>
-                                </div>
-                            </div> -->
-                        </div>
-                        <div class="table-responsive">
-                            <table class="align-middle mb-0 table table-borderless table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">#</th>
-                                        <th>Name</th>
-                                        <th class="text-center">City</th>
-                                        <th class="text-center">Status</th>
-                                        <th class="text-center">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center text-muted">#345</td>
-                                        <td>
-                                            <div class="widget-content p-0">
-                                                <div class="widget-content-wrapper">
-                                                    <div class="widget-content-left mr-3">
-                                                        <div class="widget-content-left">
-                                                            <img width="40" class="rounded-circle" src="assets/images/avatars/4.jpg" alt="">
+                <!-- ====== TABLE USERS ====== -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="main-card mb-3 card">
+                            <div class="card-header">Active Users
+                                <!-- <div class="btn-actions-pane-right">
+                                    <div role="group" class="btn-group-sm btn-group">
+                                        <button class="active btn btn-focus">Last Week</button>
+                                        <button class="btn btn-focus">All Month</button>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="table-responsive">
+                                <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">#</th>
+                                            <th>Name</th>
+                                            <th class="text-center">City</th>
+                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center text-muted">#345</td>
+                                            <td>
+                                                <div class="widget-content p-0">
+                                                    <div class="widget-content-wrapper">
+                                                        <div class="widget-content-left mr-3">
+                                                            <div class="widget-content-left">
+                                                                <img width="40" class="rounded-circle" src="assets/images/avatars/4.jpg" alt="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="widget-content-left flex2">
+                                                            <div class="widget-heading">John Doe</div>
+                                                            <div class="widget-subheading opacity-7">Web Developer</div>
                                                         </div>
                                                     </div>
-                                                    <div class="widget-content-left flex2">
-                                                        <div class="widget-heading">John Doe</div>
-                                                        <div class="widget-subheading opacity-7">Web Developer</div>
-                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">Madrid</td>
-                                        <td class="text-center">
-                                            <div class="badge badge-warning">Pending</div>
-                                        </td>
-                                        <td class="text-center">
-                                            <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Details</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center text-muted">#347</td>
-                                        <td>
-                                            <div class="widget-content p-0">
-                                                <div class="widget-content-wrapper">
-                                                    <div class="widget-content-left mr-3">
-                                                        <div class="widget-content-left">
-                                                            <img width="40" class="rounded-circle" src="assets/images/avatars/3.jpg" alt="">
+                                            </td>
+                                            <td class="text-center">Madrid</td>
+                                            <td class="text-center">
+                                                <div class="badge badge-warning">Pending</div>
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Details</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-muted">#347</td>
+                                            <td>
+                                                <div class="widget-content p-0">
+                                                    <div class="widget-content-wrapper">
+                                                        <div class="widget-content-left mr-3">
+                                                            <div class="widget-content-left">
+                                                                <img width="40" class="rounded-circle" src="assets/images/avatars/3.jpg" alt="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="widget-content-left flex2">
+                                                            <div class="widget-heading">Ruben Tillman</div>
+                                                            <div class="widget-subheading opacity-7">Etiam sit amet orci eget</div>
                                                         </div>
                                                     </div>
-                                                    <div class="widget-content-left flex2">
-                                                        <div class="widget-heading">Ruben Tillman</div>
-                                                        <div class="widget-subheading opacity-7">Etiam sit amet orci eget</div>
-                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">Berlin</td>
-                                        <td class="text-center">
-                                            <div class="badge badge-success">Completed</div>
-                                        </td>
-                                        <td class="text-center">
-                                            <button type="button" id="PopoverCustomT-2" class="btn btn-primary btn-sm">Details</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center text-muted">#321</td>
-                                        <td>
-                                            <div class="widget-content p-0">
-                                                <div class="widget-content-wrapper">
-                                                    <div class="widget-content-left mr-3">
-                                                        <div class="widget-content-left">
-                                                            <img width="40" class="rounded-circle" src="assets/images/avatars/2.jpg" alt="">
+                                            </td>
+                                            <td class="text-center">Berlin</td>
+                                            <td class="text-center">
+                                                <div class="badge badge-success">Completed</div>
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" id="PopoverCustomT-2" class="btn btn-primary btn-sm">Details</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-muted">#321</td>
+                                            <td>
+                                                <div class="widget-content p-0">
+                                                    <div class="widget-content-wrapper">
+                                                        <div class="widget-content-left mr-3">
+                                                            <div class="widget-content-left">
+                                                                <img width="40" class="rounded-circle" src="assets/images/avatars/2.jpg" alt="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="widget-content-left flex2">
+                                                            <div class="widget-heading">Elliot Huber</div>
+                                                            <div class="widget-subheading opacity-7">Lorem ipsum dolor sic</div>
                                                         </div>
                                                     </div>
-                                                    <div class="widget-content-left flex2">
-                                                        <div class="widget-heading">Elliot Huber</div>
-                                                        <div class="widget-subheading opacity-7">Lorem ipsum dolor sic</div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">London</td>
+                                            <td class="text-center">
+                                                <div class="badge badge-danger">In Progress</div>
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" id="PopoverCustomT-3" class="btn btn-primary btn-sm">Details</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center text-muted">#55</td>
+                                            <td>
+                                                <div class="widget-content p-0">
+                                                    <div class="widget-content-wrapper">
+                                                        <div class="widget-content-left mr-3">
+                                                            <div class="widget-content-left">
+                                                                <img width="40" class="rounded-circle" src="assets/images/avatars/1.jpg" alt=""></div>
+                                                        </div>
+                                                        <div class="widget-content-left flex2">
+                                                            <div class="widget-heading">Vinnie Wagstaff</div>
+                                                            <div class="widget-subheading opacity-7">UI Designer</div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">London</td>
-                                        <td class="text-center">
-                                            <div class="badge badge-danger">In Progress</div>
-                                        </td>
-                                        <td class="text-center">
-                                            <button type="button" id="PopoverCustomT-3" class="btn btn-primary btn-sm">Details</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center text-muted">#55</td>
-                                        <td>
-                                            <div class="widget-content p-0">
-                                                <div class="widget-content-wrapper">
-                                                    <div class="widget-content-left mr-3">
-                                                        <div class="widget-content-left">
-                                                            <img width="40" class="rounded-circle" src="assets/images/avatars/1.jpg" alt=""></div>
-                                                    </div>
-                                                    <div class="widget-content-left flex2">
-                                                        <div class="widget-heading">Vinnie Wagstaff</div>
-                                                        <div class="widget-subheading opacity-7">UI Designer</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">Amsterdam</td>
-                                        <td class="text-center">
-                                            <div class="badge badge-info">On Hold</div>
-                                        </td>
-                                        <td class="text-center">
-                                            <button type="button" id="PopoverCustomT-4" class="btn btn-primary btn-sm">Details</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="d-block text-center card-footer">
-                            <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
-                            <button class="btn-wide btn btn-success">Save</button>
+                                            </td>
+                                            <td class="text-center">Amsterdam</td>
+                                            <td class="text-center">
+                                                <div class="badge badge-info">On Hold</div>
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button" id="PopoverCustomT-4" class="btn btn-primary btn-sm">Details</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="d-block text-center card-footer">
+                                <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
+                                <button class="btn-wide btn btn-success">Save</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- ====== /TABLE USERS ====== -->
             </div>
-            <!-- ====== /TABLE USERS ====== -->
+
+
+
 
             <!-- ======= GRAPHIC CHART ======== -->
             <!-- <div class="row">

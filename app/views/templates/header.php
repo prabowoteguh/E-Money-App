@@ -14,6 +14,8 @@
     <!-- PACKAGE CSS -->
     <link rel="stylesheet" href="<?= BASE_URL ?>main.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/animate.css">
+    <!-- Bootstrap 4 -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/7a4dfbbce0.js" crossorigin="anonymous"></script>
     <!-- jQuery -->
@@ -24,7 +26,8 @@
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
-                <div class="logo-src"><strong>E_Money Apps</strong></div>
+                <strong>E-Money Apps</strong>
+                <div class="logo-src"></div>
                 <div class="header__pane ml-auto">
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
