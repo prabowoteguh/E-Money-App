@@ -1,4 +1,6 @@
 // ================= SUPER ADMIN =====================
+const URL_API = 'localhost:8080';
+
 $('#main_dashboard').on('click', function () {
     nonactiveSidebar();
     $('#main_dashboard').addClass('mm-active');
@@ -10,8 +12,16 @@ $('#master_role').on('click', function () {
     $('#title_page').text('Master Data Role');
     $('#content').html('');
 
+    refreshRole();
+});
+
+function ref() {
+    refreshRole();
+}
+
+function refreshRole() {
     $.ajax({
-        url: "http://192.168.100.80:8080/API-E-Money-App/public/roles/show/",
+        url: "http://" + URL_API + "/API-E-Money-App/public/roles/show/",
         type: "GET",
         dataType: "JSON",
         data: {
@@ -32,8 +42,8 @@ $('#master_role').on('click', function () {
                                 <div class="badge badge-` + ((data[i].Role_Deleted_Status == 0) ? 'success' : 'danger') + `">` + ((data[i].Role_Deleted_Status == 0) ? 'Aktif' : 'Terhapus') + `</div>
                             </td> 
                             <td class="text-center">
-                                <button type="button" id="edit_role" data-idRole="` + data[i].Role_Id + `" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Edit</button>
-                                <button type="button" id="hapus_role" data-idRole="` + data[i].Role_Id + `" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>
+                                <button type="button" data-ishapus="` + data[i].Role_Deleted_Status + `" data-role="` + data[i].Role_Nama + `" data-backdrop="false" data-id="` + data[i].Role_Id + `" class="btn btn-warning btn-sm edit_role" Data-toggle="modal"><i class="fa fa-pencil"></i> Edit</button>
+                                <button type="button" data-user="Teguh" data-role="` + data[i].Role_Nama + `" data-id="` + data[i].Role_Id + `" class="btn btn-danger btn-sm hapus_role" ` + ((data[i].Role_Deleted_Status == 0) ? '' : 'disabled') + `><i class="fa fa-trash"></i> Hapus</button>
                             </td> 
                         </tr>
 
@@ -81,77 +91,150 @@ $('#master_role').on('click', function () {
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Modal Tambah Role -->
-                <div class="modal fade" id="modal_tambah_role" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Tambah Role</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form class="needs-validation" novalidate>
-                                <div class="modal-body">
-                                    <div class="form-row">
-                                        <div class="col-md-12 mb-3">
-                                            <label for="Nama_Role">Nama Role</label>
-                                            <input type="text" class="form-control" id="Nama_Role" placeholder="First name" name="Nama_Role" required>
-                                            <div class="invalid-feedback">
-                                                Isi role terlebih dahulu!
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-                                    <button type="submit" id="btn_simpan_role" class="btn btn-primary">Simpan</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Modal Tambah Role -->
-
-                <script>
-                    // Example starter JavaScript for disabling form submissions if there are invalid fields
-                    (function() {
-                        'use strict';
-                        window.addEventListener('load', function() {
-                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                            var forms = document.getElementsByClassName('needs-validation');
-                            // Loop over them and prevent submission
-                            var validation = Array.prototype.filter.call(forms, function(form) {
-                                form.addEventListener('submit', function(event) {
-                                    if (form.checkValidity() === false) {
-                                        event.preventDefault();
-                                        event.stopPropagation();
-                                    }
-                                    form.classList.add('was-validated');
-                                }, false);
-                            });
-                        }, false);
-                    })();
-                </script>
+                </div>                
                 `);
-
 
             } else {
                 Swal.fire({
                     type: 'error',
                     title: 'Oops...',
                     text: r.Message
-                })
+                });
             }
+            $('.edit_role').on('click', function () {
+                // data-toggle="modal" data-target="#modal_tambah_role"
+                if ($(this).data('ishapus') == 1) {
+                    Swal.fire({
+                        title: 'Apakah anda yakin?',
+                        text: "Data " + $(this).data('role') + " telah terhapus, apakah anda yakin ingin mengembalikannya?",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Ya, kembalikan!'
+                    }).then((result) => {
+                        if (result.value) {
+                            $.ajax({
+                                url: "http://" + URL_API + "/API-E-Money-App/public/roles/recover/",
+                                type: "POST",
+                                // dataType: "JSON",
+                                contentType: "application/x-www-form-urlencoded",
+                                data: {
+                                    Role_Id: $(this).data('id')
+                                },
+                                success: function (r) {
+                                    if (r.Status_Code == 200) {
+                                        Swal.fire({
+                                            type: 'success',
+                                            title: 'Berhasil',
+                                            text: r.Message
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            type: 'error',
+                                            title: 'Oops...',
+                                            text: r.Message
+                                        });
+                                    }
+                                    ref();
+                                }
+                            });
+                            // ajax
+                        }
+                    })
+                } else if ($(this).data('ishapus') == 0) {
+                    $('#modal_edit_role').modal('toggle');
+                    $('#modal_edit_role').modal('show');
+                    var Role_Nama = $(this).data('role');
+                    $('#Role_Nama').val(Role_Nama);
+                    if (Role_Nama != '') {
+
+                    }
+                }
+
+            });
+
+            // Delete Role
+            $('.hapus_role').on('click', function () {
+                Swal.fire({
+                    title: 'Apakah anda yakin?',
+                    text: "Data " + $(this).data('role') + "(" + $(this).data('id') + ") akan terhapus oleh " + $(this).data('user') + "!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, hapus!'
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            url: "http://" + URL_API + "/API-E-Money-App/public/roles/delete/",
+                            type: "POST",
+                            // dataType: "JSON",
+                            contentType: "application/x-www-form-urlencoded",
+                            data: {
+                                Role_Id: $(this).data('id'),
+                                Role_Deleted_By: $(this).data('user')
+                            },
+                            success: function (r) {
+                                console.log(r);
+                                if (r.Status_Code == 200) {
+                                    Swal.fire({
+                                        type: 'success',
+                                        title: 'Berhasil',
+                                        text: r.Message
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        type: 'error',
+                                        title: 'Oops...',
+                                        text: r.Message
+                                    });
+                                }
+                                ref();
+                            }
+                        });
+                    }
+                })
+            });
+            // Delete Role ---
         }
-
     });
+}
 
-    $('#btn_simpan_role').on('click', function () {
-        console.log('OK');
-    });
+$('#btn_simpan_role').on('click', function (e) {
+    e.preventDefault();
+    var Created_By = ($('#Created_By').val());
+    var Role_Nama = ($('#Role_Nama').val());
+    if (Role_Nama != '') {
+        // console.log(Role_Nama);
+        $.ajax({
+            url: "http://" + URL_API + "/API-E-Money-App/public/roles/insert/",
+            type: "POST",
+            dataType: "JSON",
+            data: {
+                Role_Nama: Role_Nama,
+                Role_Created_By: Created_By
+            },
+            success: function (r) {
+                if (r.Status_Code == 200) {
+                    Role_Nama = '';
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Berhasil',
+                        text: r.Message
+                    })
+                    refreshRole();
+                    $('#Role_Nama').val('');
+                    $('#modal_tambah_role').modal('toggle');
+                    $('#modal_tambah_role').modal('hide');
+                } else {
+                    // 
+                }
+            }
+        });
+    } else {
+        //
+    }
 });
 
 $('#master_users').on('click', function () {

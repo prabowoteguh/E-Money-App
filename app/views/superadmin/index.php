@@ -585,7 +585,92 @@
                 <!-- ====== /TABLE USERS ====== -->
             </div>
 
+            <!-- Modal Tambah Role -->
+            <div class="modal fade" id="modal_tambah_role" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Role</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="" method="POST" class="needs-validation" novalidate>
+                            <div class="modal-body">
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="Role_Nama">Nama Role</label>
+                                        <input type="text" class="form-control" id="Role_Nama" placeholder="First name" name="Role_Nama" required>
+                                        <div class="invalid-feedback">
+                                            Isi role terlebih dahulu!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="hidden" name="Created_By" id="Created_By" value="<?= $_SESSION['data_user']->User_Nama; ?>">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                                <button type="submit" id="btn_simpan_role" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /Modal Tambah Role -->
 
+            <!-- Modal Edit Role -->
+            <div class="modal fade" id="modal_edit_role" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Role</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="" method="POST" class="needs-validation" novalidate>
+                            <div class="modal-body">
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="Role_Nama">Nama Role</label>
+                                        <input type="text" class="form-control" id="Role_Nama" placeholder="First name" name="Role_Nama" required>
+                                        <div class="invalid-feedback">
+                                            Isi role terlebih dahulu!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="hidden" name="Created_By" id="Created_By" value="<?= $_SESSION['data_user']->User_Nama; ?>">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                                <button type="submit" id="btn_simpan_role" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /Modal Edit Role -->
+
+            <script>
+                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                (function() {
+                    'use strict';
+                    window.addEventListener('load', function() {
+                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                        var forms = document.getElementsByClassName('needs-validation');
+                        // Loop over them and prevent submission
+                        var validation = Array.prototype.filter.call(forms, function(form) {
+                            form.addEventListener('submit', function(event) {
+                                if (form.checkValidity() === false) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                }
+                                form.classList.add('was-validated');
+                            }, false);
+                        });
+                    }, false);
+                })();
+            </script>
 
 
             <!-- ======= GRAPHIC CHART ======== -->
