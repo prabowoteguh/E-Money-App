@@ -1,4 +1,23 @@
 // ================= SUPER ADMIN =====================
+$(function () {
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+});
 const URL_API = 'localhost:8080';
 
 $('#main_dashboard').on('click', function () {
@@ -38,12 +57,15 @@ function refreshRole() {
                             <td class="text-center text-muted"> #` + (i + 1) + `</td>
                             <td>` + data[i].Role_Nama + `</td> 
                             <td>` + data[i].Role_Created_By + `</td> 
+                            <td>` + data[i].Role_Created_Date + `</td> 
                             <td class="text-center">
                                 <div class="badge badge-` + ((data[i].Role_Deleted_Status == 0) ? 'success' : 'danger') + `">` + ((data[i].Role_Deleted_Status == 0) ? 'Aktif' : 'Terhapus') + `</div>
                             </td> 
+                            <td>` + data[i].Role_Deleted_By + `</td>
+                            <td>` + ((data[i].Role_Deleted_Date == "0000-00-00 00:00:00") ? '' : data[i].Role_Deleted_Date) + `</td> 
                             <td class="text-center">
-                                <button type="button" data-ishapus="` + data[i].Role_Deleted_Status + `" data-role="` + data[i].Role_Nama + `" data-backdrop="false" data-id="` + data[i].Role_Id + `" class="btn btn-warning btn-sm edit_role" Data-toggle="modal"><i class="fa fa-pencil"></i> Edit</button>
-                                <button type="button" data-user="Teguh" data-role="` + data[i].Role_Nama + `" data-id="` + data[i].Role_Id + `" class="btn btn-danger btn-sm hapus_role" ` + ((data[i].Role_Deleted_Status == 0) ? '' : 'disabled') + `><i class="fa fa-trash"></i> Hapus</button>
+                                <button type="button" data-ishapus="` + data[i].Role_Deleted_Status + `" data-role="` + data[i].Role_Nama + `" data-id="` + data[i].Role_Id + `" class="btn btn-` + ((data[i].Role_Deleted_Status == 0) ? 'warning' : 'success') + ` btn-sm edit_role" Data-toggle="modal"><i class="fa fa-` + ((data[i].Role_Deleted_Status == 0) ? 'pencil' : 'recycle') + `"></i> ` + ((data[i].Role_Deleted_Status == 0) ? 'Edit' : 'Restore') + `</button>
+                                <button type="button" data-role="` + data[i].Role_Nama + `" data-id="` + data[i].Role_Id + `" class="btn btn-danger btn-sm hapus_role" ` + ((data[i].Role_Deleted_Status == 0) ? '' : 'disabled') + `><i class="fa fa-trash"></i> Hapus</button>
                             </td> 
                         </tr>
 
@@ -54,37 +76,47 @@ function refreshRole() {
                     <div class="row">
                     <div class="col-md-12">
                         <div class="main-card mb-3 card">
-                            <div class="card-header">Data Produk
+                            <div class="card-header">Data Role
                                 <div class="btn-actions-pane-right">
                                     <div role="group" class="btn-group-sm btn-group">
-                                        <button class="btn btn-success" data-backdrop="false" data-toggle="modal" data-target="#modal_tambah_produk"><i class="fa fa-plus"></i> Tambah Produk</button>
+                                        <button class="btn btn-success" data-backdrop="false" data-toggle="modal" data-target="#modal_tambah_role"><i class="fa fa-plus"></i> Tambah </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-responsive">
-                                <table class="align-middle mb-0 table  table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" class="text-center">#</th>
-                                            <th scope="col">Nama Role</th>
-                                            <th scope="col">Created By</th>
-                                            <th scope="col"  class="text-center">Status</th>
-                                            <th scope="col" class="text-center">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        ` + table + `
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th scope="col" class="text-center">#</th>
-                                            <th scope="col">Nama Role</th>
-                                            <th scope="col">Created By</th>
-                                            <th scope="col"  class="text-center">Status</th>
-                                            <th scope="col" class="text-center">Aksi</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+                            <div class="card-body">
+                                <div class="">
+                                    <div class="table-responsive">
+                                        <table id="table_role" class="align-middle mb-0 table  table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="text-center">#</th>
+                                                    <th scope="col">Nama Role</th>
+                                                    <th scope="col">Created By</th>
+                                                    <th scope="col">Created Date</th>
+                                                    <th scope="col"  class="text-center">Status</th> 
+                                                    <th scope="col">Deleted By</th>
+                                                    <th scope="col">Deleted Date</th>
+                                                    <th scope="col" class="text-center">Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                ` + table + `
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th scope="col" class="text-center">#</th>
+                                                    <th scope="col">Nama Role</th>
+                                                    <th scope="col">Created By</th>
+                                                    <th scope="col">Created Date</th>
+                                                    <th scope="col"  class="text-center">Status</th>
+                                                    <th scope="col">Deleted By</th>
+                                                    <th scope="col">Deleted Date</th>
+                                                    <th scope="col" class="text-center">Aksi</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                             <div class="d-block text-center card-footer">
                                 <div class="text-center"> <h5></h5> </div>
@@ -101,12 +133,16 @@ function refreshRole() {
                     text: r.Message
                 });
             }
+            $('#table_role').DataTable();
             $('.edit_role').on('click', function () {
                 // data-toggle="modal" data-target="#modal_tambah_role"
+                var Role_Nama = $(this).data('role');
+                var Role_Id = $(this).data('id');
+
                 if ($(this).data('ishapus') == 1) {
                     Swal.fire({
                         title: 'Apakah anda yakin?',
-                        text: "Data " + $(this).data('role') + " telah terhapus, apakah anda yakin ingin mengembalikannya?",
+                        text: "Data " + Role_Nama + " telah terhapus, apakah anda yakin ingin mengembalikannya?",
                         type: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
@@ -143,13 +179,51 @@ function refreshRole() {
                         }
                     })
                 } else if ($(this).data('ishapus') == 0) {
+                    console.log('OK');
+                    $('#modal_edit_role').modal({
+                        backdrop: false
+                    });
                     $('#modal_edit_role').modal('toggle');
                     $('#modal_edit_role').modal('show');
-                    var Role_Nama = $(this).data('role');
-                    $('#Role_Nama').val(Role_Nama);
-                    if (Role_Nama != '') {
-
-                    }
+                    $('#Role_Nama_Edit').val(Role_Nama);
+                    $('.btn_update_role').on('click', function (e) {
+                        var role_update = $('#Role_Nama_Edit').val();
+                        var Role_Updated_By = $('#Role_Updated_By').val();
+                        if (role_update != '') {
+                            e.preventDefault();
+                            $.ajax({
+                                url: "http://" + URL_API + "/API-E-Money-App/public/roles/update/",
+                                type: "POST",
+                                // dataType: "JSON",
+                                contentType: "application/x-www-form-urlencoded",
+                                data: {
+                                    Role_Id: Role_Id,
+                                    Role_Nama: role_update,
+                                    Role_Updated_By: Role_Updated_By
+                                },
+                                success: function (r) {
+                                    if (r.Status_Code == 200) {
+                                        Swal.fire({
+                                            type: 'success',
+                                            title: 'Berhasil',
+                                            text: r.Message
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            type: 'error',
+                                            title: 'Oops...',
+                                            text: r.Message
+                                        });
+                                    }
+                                    $('#Role_Nama_Edit').val('');
+                                    $('#modal_edit_role').modal('hide');
+                                    ref();
+                                }
+                            });
+                        } else {
+                            //
+                        }
+                    });
                 }
 
             });
@@ -173,7 +247,7 @@ function refreshRole() {
                             contentType: "application/x-www-form-urlencoded",
                             data: {
                                 Role_Id: $(this).data('id'),
-                                Role_Deleted_By: $(this).data('user')
+                                Role_Deleted_By: $('#Role_Updated_By').val()
                             },
                             success: function (r) {
                                 console.log(r);
@@ -201,11 +275,11 @@ function refreshRole() {
     });
 }
 
-$('#btn_simpan_role').on('click', function (e) {
-    e.preventDefault();
+$('.btn_simpan_role').on('click', function (e) {
     var Created_By = ($('#Created_By').val());
     var Role_Nama = ($('#Role_Nama').val());
     if (Role_Nama != '') {
+        e.preventDefault();
         // console.log(Role_Nama);
         $.ajax({
             url: "http://" + URL_API + "/API-E-Money-App/public/roles/insert/",
@@ -225,10 +299,10 @@ $('#btn_simpan_role').on('click', function (e) {
                     })
                     refreshRole();
                     $('#Role_Nama').val('');
-                    $('#modal_tambah_role').modal('toggle');
-                    $('#modal_tambah_role').modal('hide');
+                    // $('#modal_tambah_role').modal('toggle');
+                    // $('#modal_tambah_role').modal('hide');
                 } else {
-                    // 
+                    //
                 }
             }
         });
@@ -251,8 +325,8 @@ $('#master_mahasiswa').on('click', function () {
     $('#title_page').text('Master Data Mahasiswa');
     $('#content').html('');
 
-     $.ajax({
-        url: "http://192.168.100.80:8080/API-E-Money-App/public/mahasiswas/show/",
+    $.ajax({
+        url: "http://" + URL_API + "/API-E-Money-App/public/mahasiswas/show/",
         type: "GET",
         dataType: "JSON",
         data: {
@@ -435,7 +509,7 @@ $('#master_produk').on('click', function () {
     $('#content').html('');
 
     $.ajax({
-        url: "http://192.168.100.80:8080/API-E-Money-App/public/products/show/",
+        url: "http://" + URL_API + "/API-E-Money-App/public/products/show/",
         type: "GET",
         dataType: "JSON",
         data: {
@@ -457,14 +531,14 @@ $('#master_produk').on('click', function () {
                     //     separator = sisa ? '.' : '';
                     // rupiah += separator + ribuan.join('.');
                     // }
-                    
+
                     table += `
                         <tr>
                             <td class="text-center text-muted"> #` + (i + 1) + `</td>
                             <td>` + data[i].Produk_Foto + `</td> 
                             <td>` + data[i].Produk_Nama + ` <br /> <b>` + data[i].Produk_Code + ` </b></td> 
                             <td>` + data[i].Produk_Merk + `</td> 
-                            <td>` + data[i].Produk_Kategori+ `</td> 
+                            <td>` + data[i].Produk_Kategori + `</td> 
                             <td>` + data[i].Produk_Harga + `</td> 
                             <td>` + data[i].Produk_Stok + `</td>
                             <td>` + data[i].Produk_Created_By + `</td> 
@@ -479,8 +553,8 @@ $('#master_produk').on('click', function () {
 
                     `;
                 }
-                
-                
+
+
                 $('#content').html(`
                     <div class="row">
                     <div class="col-md-12">
