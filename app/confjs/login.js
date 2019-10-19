@@ -1,4 +1,5 @@
 // ================= LOGIN FUNCTION =================
+
 $('#btn_login').on('click', function (e) {
     e.preventDefault();
     var email = $('#email').val();
@@ -18,7 +19,7 @@ $('#btn_login').on('click', function (e) {
         });
     } else {
         $.ajax({
-            url: "http://192.168.100.80:8080/API-E-Money-App/public/login/",
+            url: "http://localhost:8080/API-E-Money-App/public/login/",
             type: "POST",
             dataType: "JSON",
             data: {
