@@ -615,64 +615,65 @@
                         </div>
                     </div>
                 </div>
-                <!-- /Modal Tambah Role -->
+            </div>
+            <!-- /Modal Tambah Role -->
 
-                <!-- Modal Edit Role -->
-                <div class="modal fade" id="modal_edit_role" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Edit Role</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form method="POST" class="needs-validation" novalidate>
-                                <div class="modal-body">
-                                    <div class="form-row">
-                                        <div class="col-md-12 mb-3">
-                                            <label for="Role_Nama_Edit">Nama Role</label>
-                                            <input type="text" class="form-control" id="Role_Nama_Edit" placeholder="First name" name="Role_Nama" required>
-                                            <div class="invalid-feedback">
-                                                Isi role terlebih dahulu!
-                                            </div>
+            <!-- Modal Edit Role -->
+            <div class="modal fade" id="modal_edit_role" tabindex="-1" role="dialog" aria-labelledby="modal_edit" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal_edit">Edit Role</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form method="POST" class="needs-validation" novalidate>
+                            <div class="modal-body">
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="Role_Nama_Edit">Nama Role</label>
+                                        <input type="text" class="form-control" id="Role_Nama_Edit" placeholder="" name="Role_Nama" required>
+                                        <div class="invalid-feedback">
+                                            Isi role terlebih dahulu!
                                         </div>
                                     </div>
                                 </div>
-                                <input type="hidden" name="Role_Updated_By" id="Role_Updated_By" value="<?= $_SESSION['data_user']->User_Nama; ?>">
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-                                    <button type="submit" class="btn btn-primary btn_update_role">Simpan Perubahan</button>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                            <input type="hidden" name="Role_Updated_By" id="Role_Updated_By" value="<?= $_SESSION['data_user']->User_Nama; ?>">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                                <button type="submit" class="btn btn-primary btn_update_role">Simpan Perubahan</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <!-- /Modal Edit Role -->
+            </div>
+            <!-- /Modal Edit Role -->
 
-                <script>
-                    // Example starter JavaScript for disabling form submissions if there are invalid fields
-                    (function() {
-                        'use strict';
-                        window.addEventListener('load', function() {
-                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                            var forms = document.getElementsByClassName('needs-validation');
-                            // Loop over them and prevent submission
-                            var validation = Array.prototype.filter.call(forms, function(form) {
-                                form.addEventListener('submit', function(event) {
-                                    if (form.checkValidity() === false) {
-                                        event.preventDefault();
-                                        event.stopPropagation();
-                                    }
-                                    form.classList.add('was-validated');
-                                }, false);
-                            });
-                        }, false);
-                    })();
-                </script>
+            <script>
+                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                (function() {
+                    'use strict';
+                    window.addEventListener('load', function() {
+                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                        var forms = document.getElementsByClassName('needs-validation');
+                        // Loop over them and prevent submission
+                        var validation = Array.prototype.filter.call(forms, function(form) {
+                            form.addEventListener('submit', function(event) {
+                                if (form.checkValidity() === false) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                }
+                                form.classList.add('was-validated');
+                            }, false);
+                        });
+                    }, false);
+                })();
+            </script>
 
-                <!-- ======= GRAPHIC CHART ======== -->
-                <!-- <div class="row">
+            <!-- ======= GRAPHIC CHART ======== -->
+            <!-- <div class="row">
                 <div class="col-md-12 col-lg-6">
                     <div class="mb-3 card">
                         <div class="card-header-tab card-header-tab-animation card-header">
@@ -930,10 +931,10 @@
                     </div>
                 </div>
             </div> -->
-                <!-- ======= /GRAPHIC CHART ======== -->
+            <!-- ======= /GRAPHIC CHART ======== -->
 
-                <!-- ======= DATA ANALYTIC ======== -->
-                <!-- <div class="row">
+            <!-- ======= DATA ANALYTIC ======== -->
+            <!-- <div class="row">
                 <div class="col-md-6 col-lg-3">
                     <div class="card-shadow-danger mb-3 widget-chart widget-chart2 text-left card">
                         <div class="widget-content">
@@ -1019,4 +1020,5 @@
                     </div>
                 </div>
             </div> -->
-                <!-- ======= /DATA ANALYTIC ======== -->
+            <!-- ======= /DATA ANALYTIC ======== -->
+        </div>
