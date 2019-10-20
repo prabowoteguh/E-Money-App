@@ -640,8 +640,8 @@
             </div>
 
             <!-- Modal Tambah Role -->
-            <div class="modal fade" id="modal_tambah_role" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+            <div class="modal fade mt-5" id="modal_tambah_role" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Tambah Role</h5>
@@ -673,7 +673,7 @@
             <!-- /Modal Tambah Role -->
 
             <!-- Modal Edit Role -->
-            <div class="modal fade" id="modal_edit_role" tabindex="-1" role="dialog" aria-labelledby="modal_edit" aria-hidden="true">
+            <div class="modal fade mt-5" id="modal_edit_role" tabindex="-1" role="dialog" aria-labelledby="modal_edit" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -704,6 +704,84 @@
                 </div>
             </div>
             <!-- /Modal Edit Role -->
+
+            <!-- Modal Tambah User -->
+            <div class="modal fade mt-5" id="modal_tambah_user" tabindex="-1" role="dialog" aria-labelledby="modal_tambah_user_label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal_tambah_user_label">Tambah User</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form method="POST" class="needs-validation" novalidate>
+                            <div class="modal-body">
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="User_Nama">Nama User <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="User_Nama" placeholder="" name="User_Nama" required>
+                                        <div class="invalid-feedback">
+                                            Isi nama terlebih dahulu!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="User_Email">Email <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="User_Email" placeholder="" name="User_Email" required>
+                                        <div class="invalid-feedback">
+                                            Isi email terlebih dahulu!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="User_Password">Password <span class="text-danger">*</span></label>
+                                        <input type="password" class="form-control" id="User_Password" placeholder="" name="User_Password" required>
+                                        <div class="invalid-feedback">
+                                            Isi password terlebih dahulu!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="User_No_Hp">Nomor HP</label>
+                                        <input type="text" class="form-control" id="User_No_Hp" placeholder="" name="User_No_Hp">
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="User_Role_Id">Role Bagian <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="User_Role_Id" name="User_Role_Id" required>
+                                            <option value="">-- PIlih Role ---</option>
+                                            <div id="User_Role_Pil"></div>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Pilih role terlebih dahulu!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <div class="custom-control custom-radio custom-check-inline">
+                                            <input class="custom-control-input" type="radio" name="User_Kelamin" id="User_Kelamin" value="1" required>
+                                            <label class="custom-control-label" for="User_Kelamin">Laki-laki</label>
+                                        </div>
+                                        <div class="custom-control custom-radio custom-check-inline">
+                                            <input class="custom-control-input" type="radio" name="User_Kelamin" id="User_Kelamin2" value="2" required>
+                                            <label class="custom-control-label" for="User_Kelamin2">Perempuan</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="User_Foto" accept="image/x-png,image/jpeg,image/jpg">
+                                            <label class="custom-file-label" id="label_user_foto" for="User_Foto">Choose file...</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="User_By" id="User_By" value="<?= $_SESSION['data_user']->User_Nama; ?>">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                                <button type="submit" class="btn btn-primary btn_tambah_user">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /Modal Tambah User -->
+
 
             <script>
                 // Example starter JavaScript for disabling form submissions if there are invalid fields

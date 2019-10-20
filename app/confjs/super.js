@@ -156,7 +156,14 @@ function refreshRole() {
                                             text: r.Message
                                         });
                                     }
-                                    ref();
+                                    Role();
+                                },
+                                error: function () {
+                                    Swal.fire({
+                                        type: 'error',
+                                        title: 'Oops...',
+                                        text: 'Sorry, your request is failed, please check your connection!'
+                                    });
                                 }
                             });
                             // ajax
@@ -201,7 +208,7 @@ function refreshRole() {
                                     }
                                     $('#Role_Nama_Edit').val('');
                                     $('#modal_edit_role').modal('hide');
-                                    ref();
+                                    Role();
                                 }
                             });
                         } else {
@@ -248,7 +255,7 @@ function refreshRole() {
                                         text: r.Message
                                     });
                                 }
-                                ref();
+                                Role();
                             }
                         });
                     }
@@ -300,8 +307,8 @@ $('#master_users').on('click', function () {
     $('#master_users').addClass('mm-active');
     $('#title_page').text('Master Data Users');
     $('#content').html('');
-    console.log('OK');
     refreshUsers();
+    SelectedOptionRole();
 });
 
 function User() {
@@ -318,7 +325,6 @@ function refreshUsers() {
         },
         success: function (r) {
             if (r.Status_Code == 200) {
-                console.log('OK');
                 var data = r.users;
                 var table = '';
 
@@ -354,7 +360,7 @@ function refreshUsers() {
                                 <div class="badge badge-` + ((data[i].User_Deleted_Status == 0) ? 'success' : 'danger') + `">` + ((data[i].User_Deleted_Status == 0) ? 'Terdaftar' : 'Terhapus') + `</div>
                             </td> 
                             <td class="text-center">
-                                <button type="button" data-user="` + data[i].User_Nama + `" data-status="` + data[i].User_Status_Aktif + `" data-id="` + data[i].User_Id + `" class="btn btn-` + ((data[i].User_Status_Aktif == 1) ? 'danger' : 'success') + ` btn-sm aktif_user" ` + ((data[i].User_Deleted_Status == 0) ? '' : 'disabled') + `><i class="fa fa-power-off"></i> ` + ((data[i].User_Deleted_Status == 0) ? ((data[i].User_Status_Aktif == 1) ? 'Disable' : 'Enable') : 'Disable') + `</button>
+                                <button type="button" data-user="` + data[i].User_Nama + `" data-status="` + data[i].User_Status_Aktif + `" data-id="` + data[i].User_Id + `" class="btn btn-` + ((data[i].User_Deleted_Status == 0) ? ((data[i].User_Status_Aktif == 1) ? 'danger' : 'success') : 'success') + ` btn-sm aktif_user" ` + ((data[i].User_Deleted_Status == 0) ? '' : 'disabled') + `><i class="fa fa-power-off"></i> ` + ((data[i].User_Deleted_Status == 0) ? ((data[i].User_Status_Aktif == 1) ? 'Disable' : 'Enable') : 'Enable') + `</button>
                                 <button type="button" data-user="` + data[i].User_Nama + `" data-ishapus="` + data[i].User_Deleted_Status + `" data-id="` + data[i].User_Id + `" class="btn btn-` + ((data[i].User_Deleted_Status == 0) ? 'warning' : 'success') + ` btn-sm edit_user"><i class="fa fa-` + ((data[i].User_Deleted_Status == 0) ? 'pencil' : 'recycle') + `"></i> ` + ((data[i].User_Deleted_Status == 0) ? 'Edit' : 'Restore') + `</button>
                                 <button type="button" data-user="` + data[i].User_Nama + `" data-id="` + data[i].User_Id + `" class="btn btn-danger btn-sm hapus_user" ` + ((data[i].User_Deleted_Status == 0) ? '' : 'disabled') + `><i class="fa fa-trash"></i> Hapus</button>
                             </td> 
@@ -370,7 +376,7 @@ function refreshUsers() {
                             <div class="card-header">Data Role
                                 <div class="btn-actions-pane-right">
                                     <div role="group" class="btn-group-sm btn-group">
-                                        <button class="btn btn-success" data-backdrop="false" data-toggle="modal" data-target="#modal_tambah_user"><i class="fa fa-plus"></i> Tambah User</button>
+                                        <button class="btn btn-success" id="btn_tambah_user" data-backdrop="false" data-toggle="modal" data-target="#modal_tambah_user"><i class="fa fa-plus"></i> Tambah User</button>
                                     </div>
                                 </div>
                             </div>
@@ -636,10 +642,124 @@ function refreshUsers() {
                 })
             });
             // Ubah status aktif User ---
+
+            // Btn Tambah User
+
+            //--Btn Tambah USer
         }
 
     });
 }
+
+function SelectedOptionRole() {
+    $.ajax({
+        url: "http://" + URL_API + "/API-E-Money-App/public/roles/",
+        type: "GET",
+        dataType: "JSON",
+        data: {
+            //
+        },
+        success: function (r) {
+            if (r.Status_Code == 200) {
+                var data = r.role;
+                var options = '<option value="">-- Pilih Role --</option>';
+                for (let i = 0; i < data.length; i++) {
+                    options += `<option value="` + data[i].Role_Id + `">` + data[i].Role_Nama + `</option>
+                                `;
+                }
+                // console.log(r.role);
+                // console.log(options);
+                $('#User_Role_Id').html(options);
+            } else {
+                // Swal.fire({
+                //     type: 'error',
+                //     title: 'Oops...',
+                //     text: "sorry, request is failed, please check your connection!"
+                // });
+                $('#User_Role_Id').html('<option value="" disabled>Tidak ada data</option>');
+            }
+            User();
+        },
+        error: function () {
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: "sorry, request is failed, please check your connection!"
+            });
+        }
+    });
+}
+
+var User_Foto = '';
+
+$('#User_Foto').on('change', function () {
+    User_Foto = $('#User_Foto').val();
+    if (User_Foto.substring(3, 11) == 'fakepath') {
+        User_Foto = User_Foto.substring(12);
+    }
+    $('#label_user_foto').text(User_Foto);
+});
+
+$('.btn_tambah_user').on('click', function (e) {
+    // console.log($("input[type='radio'][name='User_Kelamin']:checked").val());
+    if ($('#User_Email').val() != '' &&
+        $('#User_Password').val() != '' &&
+        $('#User_Nama').val() != '' &&
+        $('#User_Role_Id').val() != '') {
+
+        e.preventDefault();
+
+        $.ajax({
+            url: "http://" + URL_API + "/API-E-Money-App/public/users/insert/",
+            type: "POST",
+            dataType: "JSON",
+            data: {
+                User_Email: $('#User_Email').val(),
+                User_Password: $('#User_Password').val(),
+                User_Nama: $('#User_Nama').val(),
+                User_Kelamin: $("input[type='radio'][name='User_Kelamin']:checked").val(),
+                User_Foto: ((User_Foto == '') ? '' : User_Foto),
+                User_No_Hp: (($('#User_No_Hp').val() == '') ? '' : $('#User_No_Hp').val()),
+                User_Role_Id: $('#User_Role_Id').val(),
+                User_Created_By: $('#User_By').val()
+            },
+            success: function (r) {
+                if (r.Status_Code == 200) {
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Berhasil',
+                        text: r.Message
+                    })
+                    // $('#modal_tambah_role').modal('toggle');
+                } else {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Oops!',
+                        text: 'Maaf input data gagal!'
+                    });
+                }
+                // $('#modal_tambah_user').modal('hide');
+                $('#User_Email').val('');
+                $('#User_Password').val('');
+                $('#User_Nama').val('');
+                $('#User_Role_Id').val('');
+                $('#User_No_Hp').val('');
+                $('#User_Foto').val('');
+                $("input[type='radio'][name='User_Kelamin']").prop('checked', false);
+                $('#label_user_foto').text('Choose file..');
+                User();
+            },
+            error: function () {
+                Swal.fire({
+                    type: 'error',
+                    title: 'Oops!',
+                    text: 'Sorry, request is faied, please check your connection!'
+                })
+            }
+        });
+    }
+
+});
 
 $('#master_mahasiswa').on('click', function () {
     nonactiveSidebar();
