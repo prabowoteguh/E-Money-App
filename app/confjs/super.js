@@ -360,7 +360,7 @@ function refreshUsers() {
                                 <div class="badge badge-` + ((data[i].User_Deleted_Status == 0) ? 'success' : 'danger') + `">` + ((data[i].User_Deleted_Status == 0) ? 'Terdaftar' : 'Terhapus') + `</div>
                             </td> 
                             <td class="text-center">
-                                <button type="button" data-user="` + data[i].User_Nama + `" data-status="` + data[i].User_Status_Aktif + `" data-id="` + data[i].User_Id + `" class="btn btn-` + ((data[i].User_Deleted_Status == 0) ? ((data[i].User_Status_Aktif == 1) ? 'danger' : 'success') : 'success') + ` btn-sm aktif_user" ` + ((data[i].User_Deleted_Status == 0) ? '' : 'disabled') + `><i class="fa fa-power-off"></i> ` + ((data[i].User_Deleted_Status == 0) ? ((data[i].User_Status_Aktif == 1) ? 'Disable' : 'Enable') : 'Enable') + `</button>
+                                <button type="button" data-user="` + data[i].User_Nama + `" data-status="` + data[i].User_Status_Aktif + `" data-id="` + data[i].User_Id + `" class="btn btn-` + ((data[i].User_Deleted_Status == 0) ? ((data[i].User_Status_Aktif == 1) ? 'danger' : 'success') : 'success') + ` btn-sm aktif_user" ` + ((data[i].User_Deleted_Status == 0) ? '' : 'disabled') + `><i class="fa fa-power-off"></i> ` + ((data[i].User_Deleted_Status == 0) ? ((data[i].User_Status_Aktif == 1) ? 'Nonaktifkan' : 'Aktifkan') : 'Aktifkan') + `</button>
                                 <button type="button" data-user="` + data[i].User_Nama + `" data-ishapus="` + data[i].User_Deleted_Status + `" data-id="` + data[i].User_Id + `" class="btn btn-` + ((data[i].User_Deleted_Status == 0) ? 'warning' : 'success') + ` btn-sm edit_user"><i class="fa fa-` + ((data[i].User_Deleted_Status == 0) ? 'pencil' : 'recycle') + `"></i> ` + ((data[i].User_Deleted_Status == 0) ? 'Edit' : 'Restore') + `</button>
                                 <button type="button" data-user="` + data[i].User_Nama + `" data-id="` + data[i].User_Id + `" class="btn btn-danger btn-sm hapus_user" ` + ((data[i].User_Deleted_Status == 0) ? '' : 'disabled') + `><i class="fa fa-trash"></i> Hapus</button>
                             </td> 
@@ -746,7 +746,7 @@ $('.btn_tambah_user').on('click', function (e) {
                 $('#User_No_Hp').val('');
                 $('#User_Foto').val('');
                 $("input[type='radio'][name='User_Kelamin']").prop('checked', false);
-                $('#label_user_foto').text('Choose file..');
+                $('#label_user_foto').text('Pilih foto..');
                 User();
             },
             error: function () {
