@@ -222,15 +222,69 @@
                     <li class="app-sidebar__heading">Laporan</li>
                     <li>
                         <a id="report_penjualan" href="javascript:void(0);">
-                            <i class="metismenu-icon fa fa-chart-bar">
-                            </i>Laporan Penjualan
+                            <i class="metismenu-icon fa fa-chart-bar"></i>
+                            Laporan Penjualan
+                            <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                         </a>
+                        <ul>
+                            <li>
+                                <a id="report_harian_penjualan" href="javascript:void(0);>
+                                    <i class=" metismenu-icon"></i>
+                                    Harian
+                                </a>
+                            </li>
+                            <li>
+                                <a id="report_mingguan_penjualan" href="javascript:void(0);>
+                                    <i class=" metismenu-icon">
+                                    </i>Mingguan
+                                </a>
+                            </li>
+                            <li>
+                                <a id="report_bulanan_penjualan" href="javascript:void(0);>
+                                    <i class=" metismenu-icon">
+                                    </i>Bulanan
+                                </a>
+                            </li>
+                            <li>
+                                <a id="report_tahunan_penjualan" href="javascript:void(0);>
+                                    <i class=" metismenu-icon">
+                                    </i>Tahunan
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a id="report_eMoney" href="javascript:void(0);">
-                            <i class="metismenu-icon fa fa-chart-line">
-                            </i>Laporan Topup E-Money
+                            <i class="metismenu-icon fa fa-chart-line"></i>
+                            Laporan Topup E-Money
+                            <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                         </a>
+                        <ul>
+                            <li>
+                                <a id="report_harian_topup" href="javascript:void(0);>
+                                    <i class=" metismenu-icon"></i>
+                                    Harian
+                                </a>
+                            </li>
+                            <li>
+                                <a id="report_mingguan_topup" href="javascript:void(0);>
+                                    <i class=" metismenu-icon">
+                                    </i>Mingguan
+                                </a>
+                            </li>
+                            <li>
+                                <a id="report_bulanan_topup" href="javascript:void(0);>
+                                    <i class=" metismenu-icon">
+                                    </i>Bulanan
+                                </a>
+                            </li>
+                            <li>
+                                <a id="report_tahunan_topup" href="javascript:void(0);>
+                                    <i class=" metismenu-icon">
+                                    </i>Tahunan
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a id="cetak_kartu" href="javascript:void(0);">

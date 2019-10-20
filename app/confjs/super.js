@@ -1063,10 +1063,82 @@ $('#report_penjualan').on('click', function () {
 
 });
 
+$('#report_harian_penjualan').on('click', function () {
+    nonactiveSidebar();
+    $('#report_penjualan').addClass('mm-active');
+    $('#report_harian_penjualan').addClass('mm-active');
+    $('#title_page').text('Laporan Penjualan Harian');
+    $('#content').html('');
+
+});
+
+$('#report_mingguan_penjualan').on('click', function () {
+    nonactiveSidebar();
+    $('#report_penjualan').addClass('mm-active');
+    $('#report_mingguan_penjualan').addClass('mm-active');
+    $('#title_page').text('Laporan Penjualan Mingguan');
+    $('#content').html('');
+
+});
+
+$('#report_bulanan_penjualan').on('click', function () {
+    nonactiveSidebar();
+    $('#report_penjualan').addClass('mm-active');
+    $('#report_bulanan_penjualan').addClass('mm-active');
+    $('#title_page').text('Laporan Penjualan Bulanan');
+    $('#content').html('');
+
+});
+
+$('#report_tahunan_penjualan').on('click', function () {
+    nonactiveSidebar();
+    $('#report_penjualan').addClass('mm-active');
+    $('#report_tahunan_penjualan').addClass('mm-active');
+    $('#title_page').text('Laporan Penjualan Tahunan');
+    $('#content').html('');
+
+});
+
 $('#report_eMoney').on('click', function () {
     nonactiveSidebar();
     $('#report_eMoney').addClass('mm-active');
     $('#title_page').text('Laporan E-Money');
+    $('#content').html('');
+
+});
+
+$('#report_harian_topup').on('click', function () {
+    nonactiveSidebar();
+    $('#report_eMoney').addClass('mm-active');
+    $('#report_harian_topup').addClass('mm-active');
+    $('#title_page').text('Laporan Topup Harian');
+    $('#content').html('');
+
+});
+
+$('#report_mingguan_topup').on('click', function () {
+    nonactiveSidebar();
+    $('#report_eMoney').addClass('mm-active');
+    $('#report_mingguan_topup').addClass('mm-active');
+    $('#title_page').text('Laporan Topup Mingguan');
+    $('#content').html('');
+
+});
+
+$('#report_bulanan_topup').on('click', function () {
+    nonactiveSidebar();
+    $('#report_eMoney').addClass('mm-active');
+    $('#report_bulanan_topup').addClass('mm-active');
+    $('#title_page').text('Laporan Topup Bulanan');
+    $('#content').html('');
+
+});
+
+$('#report_tahunan_topup').on('click', function () {
+    nonactiveSidebar();
+    $('#report_eMoney').addClass('mm-active');
+    $('#report_tahunan_topup').addClass('mm-active');
+    $('#title_page').text('Laporan Topup Tahunan');
     $('#content').html('');
 
 });
@@ -1088,9 +1160,20 @@ function nonactiveSidebar() {
     $('#master_produk').removeClass('mm-active');
     $('#tr_penjualan').removeClass('mm-active');
     $('#tr_eMoney').removeClass('mm-active');
+    // Laporan Penjualan
     $('#report_penjualan').removeClass('mm-active');
+    $('#report_harian_penjualan').removeClass('mm-active');
+    $('#report_mingguan_penjualan').removeClass('mm-active');
+    $('#report_bulanan_penjualan').removeClass('mm-active');
+    $('#report_tahunan_penjualan').removeClass('mm-active');
+    // Laporan
     $('#report_eMoney').removeClass('mm-active');
+    $('#report_harian_topup').removeClass('mm-active');
+    $('#report_mingguan_topup').removeClass('mm-active');
+    $('#report_bulanan_topup').removeClass('mm-active');
+    $('#report_tahunan_topup').removeClass('mm-active');
     $('#cetak_kartu').removeClass('mm-active');
+
 }
 // ================= /SUPER ADMIN =====================
 // console.log('OK');
