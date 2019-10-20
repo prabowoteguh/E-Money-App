@@ -222,15 +222,69 @@
                     <li class="app-sidebar__heading">Laporan</li>
                     <li>
                         <a id="report_penjualan" href="javascript:void(0);">
-                            <i class="metismenu-icon fa fa-chart-bar">
-                            </i>Laporan Penjualan
+                            <i class="metismenu-icon fa fa-chart-bar"></i>
+                            Laporan Penjualan
+                            <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                         </a>
+                        <ul>
+                            <li>
+                                <a id="report_harian_penjualan" href="javascript:void(0);>
+                                    <i class=" metismenu-icon"></i>
+                                    Harian
+                                </a>
+                            </li>
+                            <li>
+                                <a id="report_mingguan_penjualan" href="javascript:void(0);>
+                                    <i class=" metismenu-icon">
+                                    </i>Mingguan
+                                </a>
+                            </li>
+                            <li>
+                                <a id="report_bulanan_penjualan" href="javascript:void(0);>
+                                    <i class=" metismenu-icon">
+                                    </i>Bulanan
+                                </a>
+                            </li>
+                            <li>
+                                <a id="report_tahunan_penjualan" href="javascript:void(0);>
+                                    <i class=" metismenu-icon">
+                                    </i>Tahunan
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a id="report_eMoney" href="javascript:void(0);">
-                            <i class="metismenu-icon fa fa-chart-line">
-                            </i>Laporan Topup E-Money
+                            <i class="metismenu-icon fa fa-chart-line"></i>
+                            Laporan Topup E-Money
+                            <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                         </a>
+                        <ul>
+                            <li>
+                                <a id="report_harian_topup" href="javascript:void(0);>
+                                    <i class=" metismenu-icon"></i>
+                                    Harian
+                                </a>
+                            </li>
+                            <li>
+                                <a id="report_mingguan_topup" href="javascript:void(0);>
+                                    <i class=" metismenu-icon">
+                                    </i>Mingguan
+                                </a>
+                            </li>
+                            <li>
+                                <a id="report_bulanan_topup" href="javascript:void(0);>
+                                    <i class=" metismenu-icon">
+                                    </i>Bulanan
+                                </a>
+                            </li>
+                            <li>
+                                <a id="report_tahunan_topup" href="javascript:void(0);>
+                                    <i class=" metismenu-icon">
+                                    </i>Tahunan
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a id="cetak_kartu" href="javascript:void(0);">
@@ -586,8 +640,8 @@
             </div>
 
             <!-- Modal Tambah Role -->
-            <div class="modal fade" id="modal_tambah_role" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+            <div class="modal fade mt-5" id="modal_tambah_role" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Tambah Role</h5>
@@ -615,64 +669,148 @@
                         </div>
                     </div>
                 </div>
-                <!-- /Modal Tambah Role -->
+            </div>
+            <!-- /Modal Tambah Role -->
 
-                <!-- Modal Edit Role -->
-                <div class="modal fade" id="modal_edit_role" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Edit Role</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form method="POST" class="needs-validation" novalidate>
-                                <div class="modal-body">
-                                    <div class="form-row">
-                                        <div class="col-md-12 mb-3">
-                                            <label for="Role_Nama_Edit">Nama Role</label>
-                                            <input type="text" class="form-control" id="Role_Nama_Edit" placeholder="First name" name="Role_Nama" required>
-                                            <div class="invalid-feedback">
-                                                Isi role terlebih dahulu!
-                                            </div>
+            <!-- Modal Edit Role -->
+            <div class="modal fade mt-5" id="modal_edit_role" tabindex="-1" role="dialog" aria-labelledby="modal_edit" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal_edit">Edit Role</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form method="POST" class="needs-validation" novalidate>
+                            <div class="modal-body">
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="Role_Nama_Edit">Nama Role</label>
+                                        <input type="text" class="form-control" id="Role_Nama_Edit" placeholder="" name="Role_Nama" required>
+                                        <div class="invalid-feedback">
+                                            Isi role terlebih dahulu!
                                         </div>
                                     </div>
                                 </div>
-                                <input type="hidden" name="Role_Updated_By" id="Role_Updated_By" value="<?= $_SESSION['data_user']->User_Nama; ?>">
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-                                    <button type="submit" class="btn btn-primary btn_update_role">Simpan Perubahan</button>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                            <input type="hidden" name="Role_Updated_By" id="Role_Updated_By" value="<?= $_SESSION['data_user']->User_Nama; ?>">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                                <button type="submit" class="btn btn-primary btn_update_role">Simpan Perubahan</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <!-- /Modal Edit Role -->
+            </div>
+            <!-- /Modal Edit Role -->
 
-                <script>
-                    // Example starter JavaScript for disabling form submissions if there are invalid fields
-                    (function() {
-                        'use strict';
-                        window.addEventListener('load', function() {
-                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                            var forms = document.getElementsByClassName('needs-validation');
-                            // Loop over them and prevent submission
-                            var validation = Array.prototype.filter.call(forms, function(form) {
-                                form.addEventListener('submit', function(event) {
-                                    if (form.checkValidity() === false) {
-                                        event.preventDefault();
-                                        event.stopPropagation();
-                                    }
-                                    form.classList.add('was-validated');
-                                }, false);
-                            });
-                        }, false);
-                    })();
-                </script>
+            <!-- Modal Tambah User -->
+            <div class="modal fade mt-5" id="modal_tambah_user" tabindex="-1" role="dialog" aria-labelledby="modal_tambah_user_label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal_tambah_user_label">Tambah User</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="User_Nama">Nama User <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="User_Nama" placeholder="" name="User_Nama" required>
+                                        <div class="invalid-feedback">
+                                            Isi nama terlebih dahulu!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="User_Email">Email <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="User_Email" placeholder="" name="User_Email" required>
+                                        <div class="invalid-feedback">
+                                            Isi email terlebih dahulu!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="User_Password">Password <span class="text-danger">*</span></label>
+                                        <input type="password" class="form-control" id="User_Password" placeholder="" name="User_Password" required>
+                                        <div class="invalid-feedback">
+                                            Isi password terlebih dahulu!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="User_No_Hp">Nomor HP</label>
+                                        <input type="text" class="form-control" id="User_No_Hp" placeholder="" name="User_No_Hp">
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="User_Role_Id">Role Bagian <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="User_Role_Id" name="User_Role_Id" required>
+                                            <option value="">-- PIlih Role ---</option>
+                                            <div id="User_Role_Pil"></div>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Pilih role terlebih dahulu!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <div class="custom-control custom-radio custom-check-inline">
+                                            <input class="custom-control-input" type="radio" name="User_Kelamin" id="User_Kelamin" value="1" required>
+                                            <label class="custom-control-label" for="User_Kelamin">Laki-laki</label>
+                                        </div>
+                                        <div class="custom-control custom-radio custom-check-inline">
+                                            <input class="custom-control-input" type="radio" name="User_Kelamin" id="User_Kelamin2" value="2" required>
+                                            <label class="custom-control-label" for="User_Kelamin2">Perempuan</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="User_Foto" id="User_Foto" accept="image/x-png,image/jpeg,image/jpg">
+                                            <label class="custom-file-label" id="label_user_foto" for="file">Choose file...</label>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-12 mb-3">
+                                            <img id="avatar" width="100" height="120" class="rounded-circle" src="" alt="avatar">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="User_By" id="User_By" value="<?= $_SESSION['data_user']->User_Nama; ?>">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                                <button type="submit" class="btn btn-primary btn_tambah_user">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /Modal Tambah User -->
 
-                <!-- ======= GRAPHIC CHART ======== -->
-                <!-- <div class="row">
+
+            <script>
+                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                (function() {
+                    'use strict';
+                    window.addEventListener('load', function() {
+                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                        var forms = document.getElementsByClassName('needs-validation');
+                        // Loop over them and prevent submission
+                        var validation = Array.prototype.filter.call(forms, function(form) {
+                            form.addEventListener('submit', function(event) {
+                                if (form.checkValidity() === false) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                }
+                                form.classList.add('was-validated');
+                            }, false);
+                        });
+                    }, false);
+                })();
+            </script>
+
+            <!-- ======= GRAPHIC CHART ======== -->
+            <!-- <div class="row">
                 <div class="col-md-12 col-lg-6">
                     <div class="mb-3 card">
                         <div class="card-header-tab card-header-tab-animation card-header">
@@ -930,10 +1068,10 @@
                     </div>
                 </div>
             </div> -->
-                <!-- ======= /GRAPHIC CHART ======== -->
+            <!-- ======= /GRAPHIC CHART ======== -->
 
-                <!-- ======= DATA ANALYTIC ======== -->
-                <!-- <div class="row">
+            <!-- ======= DATA ANALYTIC ======== -->
+            <!-- <div class="row">
                 <div class="col-md-6 col-lg-3">
                     <div class="card-shadow-danger mb-3 widget-chart widget-chart2 text-left card">
                         <div class="widget-content">
@@ -1019,4 +1157,5 @@
                     </div>
                 </div>
             </div> -->
-                <!-- ======= /DATA ANALYTIC ======== -->
+            <!-- ======= /DATA ANALYTIC ======== -->
+        </div>
