@@ -715,7 +715,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form method="POST" class="needs-validation" novalidate>
+                        <form method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="form-row">
                                     <div class="col-md-12 mb-3">
@@ -765,8 +765,13 @@
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="User_Foto" accept="image/x-png,image/jpeg,image/jpg">
-                                            <label class="custom-file-label" id="label_user_foto" for="User_Foto">Choose file...</label>
+                                            <input type="file" class="custom-file-input" name="User_Foto" id="User_Foto" accept="image/x-png,image/jpeg,image/jpg">
+                                            <label class="custom-file-label" id="label_user_foto" for="file">Choose file...</label>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-12 mb-3">
+                                            <img id="avatar" width="100" height="120" class="rounded-circle" src="" alt="avatar">
                                         </div>
                                     </div>
                                 </div>

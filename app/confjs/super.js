@@ -692,14 +692,63 @@ function SelectedOptionRole() {
 
 var User_Foto = '';
 
+// Untuk menampilkan foto sebelum di upload
+function readURL(input, idFoto) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#' + idFoto).attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+// =======================================
+
+// Upload file foto
+function uploadFile(idFile, URL) {
+    var fd = new FormData();
+    var files = $('#' + idFile)[0].files[0];
+    fd.append('file', files);
+
+    $.ajax({
+        url: BASE_URL + URL,
+        type: 'POST',
+        data: fd,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            if (response != 0) {
+                // $("#img").attr("src", response);
+                // $(".preview img").show(); // Display image element
+            } else {
+                alert('file not uploaded');
+            }
+        },
+        error: function () {
+            Swal.fire({
+                type: 'error',
+                title: 'Oops..',
+                text: 'Sorry, your request to upload failed, please check your connection!'
+            });
+        }
+    });
+}
+// ====================================
+
+// Get file name Foto
 $('#User_Foto').on('change', function () {
     User_Foto = $('#User_Foto').val();
     if (User_Foto.substring(3, 11) == 'fakepath') {
         User_Foto = User_Foto.substring(12);
     }
     $('#label_user_foto').text(User_Foto);
+    readURL(this, 'avatar');
 });
+// =====================================
 
+// Tambah user
 $('.btn_tambah_user').on('click', function (e) {
     // console.log($("input[type='radio'][name='User_Kelamin']:checked").val());
     if ($('#User_Email').val() != '' &&
@@ -708,7 +757,7 @@ $('.btn_tambah_user').on('click', function (e) {
         $('#User_Role_Id').val() != '') {
 
         e.preventDefault();
-
+        uploadFile('User_Foto', 'homecontroller/uploadFile');
         $.ajax({
             url: "http://" + URL_API + "/API-E-Money-App/public/users/insert/",
             type: "POST",
@@ -747,6 +796,7 @@ $('.btn_tambah_user').on('click', function (e) {
                 $('#User_Foto').val('');
                 $("input[type='radio'][name='User_Kelamin']").prop('checked', false);
                 $('#label_user_foto').text('Pilih foto..');
+                $('#avatar').attr('src', '');
                 User();
             },
             error: function () {
@@ -760,6 +810,7 @@ $('.btn_tambah_user').on('click', function (e) {
     }
 
 });
+// ======================================
 
 $('#master_mahasiswa').on('click', function () {
     nonactiveSidebar();
