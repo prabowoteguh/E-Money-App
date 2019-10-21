@@ -46,6 +46,8 @@
                <!-- Sweetallert 2 -->
                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
                <!-- Function JS -->
+               <script src="<?= BASE_URL ?>../app/confjs/global.js"></script>
+
 
                <!-- ConfJS untuk fungsi2 setiap views role -->
                <?php

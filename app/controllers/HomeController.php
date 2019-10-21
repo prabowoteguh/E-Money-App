@@ -19,12 +19,12 @@ class HomeController extends Controller
                 $this->view('templates/header', $data);
                 $this->view('superadmin/index', $data);
                 $this->view('templates/footer', $data);
-            } else if ($_SESSION['data_user']->Role_Nama == 'Admin') {
+            } else if ($_SESSION['data_user']->Role_Nama == 'Admin Parkir') {
                 $data['title'] = 'Dashboard | ' . $_SESSION['data_user']->Role_Nama;
                 $data['layout_option'] = $this->view('templates/layout_option');
 
                 $this->view('templates/header', $data);
-                $this->view('admin/index', $data);
+                $this->view('parkir/index', $data);
                 $this->view('templates/footer', $data);
 
                 # code...

@@ -2,7 +2,7 @@
 
 /* ===== URI CONFIG ===== */
 
-define('BASE_URL', 'http://localhost:8080/E-Money-App/public/');
+define('BASE_URL', 'http://localhost/E-Money-App/public/');
 /* ===== URL API ===== */
 define('API_URL', 'http://localhost:8080/API-E-Money-App/public/');
 

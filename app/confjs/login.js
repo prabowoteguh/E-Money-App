@@ -1,4 +1,6 @@
 // ================= LOGIN FUNCTION =================
+const URL_API = '192.168.10.172:8080';
+const BASE_URL = 'http://localhost/E-Money-App/public/';
 
 $('#btn_login').on('click', function (e) {
     e.preventDefault();
@@ -19,7 +21,7 @@ $('#btn_login').on('click', function (e) {
         });
     } else {
         $.ajax({
-            url: "http://localhost:8080/API-E-Money-App/public/login/",
+            url: "http://" + URL_API + "/API-E-Money-App/public/login/",
             type: "POST",
             dataType: "JSON",
             data: {
