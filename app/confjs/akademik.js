@@ -1,6 +1,6 @@
 // ================= ADMIN AKADEMIK =====================
 const URL_API = '192.168.10.172:8080';
-const BASE_URL = 'http://localhost:8080/E-Money-App/public/';
+const BASE_URL = 'http://localhost/E-Money-App/public/';
 // console.log('Akademik');
 
 $('#main_dashboard').on('click', function () {
