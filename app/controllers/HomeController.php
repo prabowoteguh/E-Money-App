@@ -12,15 +12,15 @@ class HomeController extends Controller
     {
         $data = [];
         if (isset($_SESSION['data_user'])) {
-            if ($_SESSION['data_user']->Role_Nama == 'Super Admin') {
-                $data['title'] = 'Dashboard | Superadmin';
+            if ($_SESSION['data_user']->Role_Nama == 'Super Admin' || $_SESSION['data_user']->Role_Nama == 'Developer') {
+                $data['title'] = 'Dashboard | ' . $_SESSION['data_user']->Role_Nama;
                 $data['layout_option'] = $this->view('templates/layout_option');
 
                 $this->view('templates/header', $data);
                 $this->view('superadmin/index', $data);
                 $this->view('templates/footer', $data);
             } else if ($_SESSION['data_user']->Role_Nama == 'Admin') {
-                $data['title'] = 'Dashboard | Admin';
+                $data['title'] = 'Dashboard | ' . $_SESSION['data_user']->Role_Nama;
                 $data['layout_option'] = $this->view('templates/layout_option');
 
                 $this->view('templates/header', $data);
@@ -29,7 +29,7 @@ class HomeController extends Controller
 
                 # code...
             } else if ($_SESSION['data_user']->Role_Nama == 'Akademik') {
-                $data['title'] = 'Dashboard | Akademik';
+                $data['title'] = 'Dashboard | ' . $_SESSION['data_user']->Role_Nama;
                 $data['layout_option'] = $this->view('templates/layout_option');
 
                 $this->view('templates/header', $data);
@@ -38,7 +38,7 @@ class HomeController extends Controller
 
                 # code...
             } else if ($_SESSION['data_user']->Role_Nama == 'Admin Kantin') {
-                $data['title'] = 'Dashboard | Admin Kantin';
+                $data['title'] = 'Dashboard | ' . $_SESSION['data_user']->Role_Nama;
                 $data['layout_option'] = $this->view('templates/layout_option');
 
                 $this->view('templates/header', $data);
@@ -47,7 +47,7 @@ class HomeController extends Controller
 
                 # code...
             } else if ($_SESSION['data_user']->Role_Nama == 'Keuangan') {
-                $data['title'] = 'Dashboard | Keuangan';
+                $data['title'] = 'Dashboard | ' . $_SESSION['data_user']->Role_Nama;
                 $data['layout_option'] = $this->view('templates/layout_option');
 
                 $this->view('templates/header', $data);

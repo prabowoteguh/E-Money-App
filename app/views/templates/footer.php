@@ -46,6 +46,38 @@
                <!-- Sweetallert 2 -->
                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
                <!-- Function JS -->
-               <script src="<?= BASE_URL ?>../app/confjs/super.js"></script>
+
+               <!-- ConfJS untuk fungsi2 setiap views role -->
+               <?php
+
+                if ($_SESSION['data_user']->Role_Nama == 'Super Admin' || $_SESSION['data_user']->Role_Nama == 'Developer') {
+                    ?>
+                   <script src="<?= BASE_URL ?>../app/confjs/super.js"></script>
+
+               <?php
+                } else if ($_SESSION['data_user']->Role_Nama == 'Admin Parkir') {
+                    ?>
+                   <script src="<?= BASE_URL ?>../app/confjs/parkir.js"></script>
+
+               <?php
+                } else if ($_SESSION['data_user']->Role_Nama == 'Akademik') {
+                    ?>
+                   <script src="<?= BASE_URL ?>../app/confjs/akademik.js"></script>
+
+               <?php
+                } else if ($_SESSION['data_user']->Role_Nama == 'Admin Kantin') {
+                    ?>
+                   <script src="<?= BASE_URL ?>../app/confjs/kantin.js"></script>
+
+               <?php
+                } else if ($_SESSION['data_user']->Role_Nama == 'Keuangan') {
+                    ?>
+                   <script src="<?= BASE_URL ?>../app/confjs/keuangan.js"></script>
+
+               <?php
+                } else {
+                    //#code..
+                }
+                ?>
 
                </html>
