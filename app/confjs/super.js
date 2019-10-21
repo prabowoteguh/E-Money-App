@@ -314,6 +314,7 @@ $('#master_users').on('click', function () {
 function User() {
     refreshUsers();
 }
+var User_Foto = '';
 
 function refreshUsers() {
     $.ajax({
@@ -493,49 +494,111 @@ function refreshUsers() {
                         }
                     })
                 } else if ($(this).data('ishapus') == 0) {
-                    $('#modal_edit_role').modal({
-                        backdrop: false
+                    $('#modal_user_label').text(' Edit User ');
+                    $('.btn_tambah_user').text('Simpan Perubahan');
+
+                    $.ajax({
+                        url: "http://" + URL_API + "/API-E-Money-App/public/users/getDataById/",
+                        type: "POST",
+                        // dataType: "JSON",
+                        contentType: "application/x-www-form-urlencoded",
+                        data: {
+                            User_Id: User_Id
+                        },
+                        success: function (r) {
+                            if (r.Status_Code == 200) {
+                                $('#modal_tambah_user').modal({
+                                    backdrop: false
+                                });
+                                $('#modal_tambah_user').modal('toggle');
+                                $('#modal_tambah_user').modal('show');
+                                var user = r.User;
+                                // Pengisian data dari response
+                                $('#User_Email').val(user.User_Email);
+                                // $('#User_Email').prop('readonly', true);
+                                $('#User_Password').val(user.User_Password);
+                                // $('#User_Password').prop('readonly', true);
+                                $('#User_Nama').val(user.User_Nama);
+                                $('#User_Role_Id').val(user.User_Role_Id);
+                                $('#User_No_Hp').val(user.User_No_Hp);
+                                // $('#User_Foto').val(user.User_Foto);
+                                $("input[type='radio'][name='User_Kelamin'][value='" + user.User_Kelamin + "']").prop('checked', true);
+                                $('#label_user_foto').text(user.User_Foto);
+                                $('#avatar').attr('src', "assets/images/avatars/" + user.User_Foto);
+                                // ============================
+                                console.log(r.User);
+                            } else {
+                                Swal.fire({
+                                    type: 'error',
+                                    title: 'Oops...',
+                                    text: r.Message
+                                });
+                            }
+                            User();
+                        },
+                        error: function () {
+                            Swal.fire({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: "Sorry, request is failed, please check your connection!"
+                            });
+                        }
                     });
-                    $('#modal_edit_role').modal('show');
-                    $('#modal_edit_role').modal('toggle');
-                    $('#Role_Nama_Edit').val(Role_Nama);
-                    console.log('OK');
-                    $('.btn_update_role').on('click', function (e) {
-                        var role_update = $('#Role_Nama_Edit').val();
-                        var Role_Updated_By = $('#Role_Updated_By').val();
-                        if (role_update != '') {
-                            e.preventDefault();
-                            $.ajax({
-                                url: "http://" + URL_API + "/API-E-Money-App/public/roles/update/",
-                                type: "POST",
-                                // dataType: "JSON",
-                                contentType: "application/x-www-form-urlencoded",
-                                data: {
-                                    Role_Id: Role_Id,
-                                    Role_Nama: role_update,
-                                    Role_Updated_By: Role_Updated_By
-                                },
-                                success: function (r) {
-                                    if (r.Status_Code == 200) {
-                                        Swal.fire({
-                                            type: 'success',
-                                            title: 'Berhasil',
-                                            text: r.Message
-                                        });
-                                    } else {
+                    // ajax get data user by id
+
+
+                    $('.btn_tambah_user').on('click', function (e) {
+                        if ($('.btn_tambah_user').text() == 'Simpan Perubahan') {
+                            if ($('#User_Email').val() != '' && $('#User_Password').val() != '' && $('#User_Nama').val() != '' && $('#User_Role_Id').val() != '') {
+
+                                e.preventDefault();
+                                uploadFile('User_Foto', 'homecontroller/uploadFile');
+
+                                $.ajax({
+                                    url: "http://" + URL_API + "/API-E-Money-App/public/users/update/",
+                                    type: "POST",
+                                    // dataType: "JSON",
+                                    contentType: "application/x-www-form-urlencoded",
+                                    data: {
+                                        User_Email: $('#User_Email').val(),
+                                        User_Password: $('#User_Password').val(),
+                                        User_Nama: $('#User_Nama').val(),
+                                        User_Kelamin: $("input[type='radio'][name='User_Kelamin']:checked").val(),
+                                        User_Foto: ((User_Foto == '') ? '' : User_Foto),
+                                        User_No_Hp: (($('#User_No_Hp').val() == '') ? '' : $('#User_No_Hp').val()),
+                                        User_Role_Id: $('#User_Role_Id').val(),
+                                        User_Updated_By: $('#User_By').val(),
+                                        User_Id: User_Id
+                                    },
+                                    success: function (r) {
+                                        if (r.Status_Code == 200) {
+                                            Swal.fire({
+                                                type: 'success',
+                                                title: 'Berhasil',
+                                                text: r.Message
+                                            });
+                                        } else {
+                                            Swal.fire({
+                                                type: 'error',
+                                                title: 'Oops...',
+                                                text: r.Message
+                                            });
+                                        }
+                                        clearInputUser();
+                                        $('#modal_tambah_user').modal('toggle');
+                                        $('#modal_tambah_user').modal('hide');
+                                        User();
+                                    },
+                                    error: function () {
                                         Swal.fire({
                                             type: 'error',
                                             title: 'Oops...',
-                                            text: r.Message
+                                            text: "Sorry, request is failed, please check your connection!"
                                         });
                                     }
-                                    $('#Role_Nama_Edit').val('');
-                                    $('#modal_edit_role').modal('hide');
-                                    ref();
-                                }
-                            });
-                        } else {
-                            //
+                                });
+                                // Ajax update user =====
+                            }
                         }
                     });
                 }
@@ -690,8 +753,6 @@ function SelectedOptionRole() {
     });
 }
 
-var User_Foto = '';
-
 // Untuk menampilkan foto sebelum di upload
 function readURL(input, idFoto) {
     if (input.files && input.files[0]) {
@@ -737,6 +798,34 @@ function uploadFile(idFile, URL) {
 }
 // ====================================
 
+// Clear input User
+function clearInputUser(params) {
+    $('#User_Email').val('');
+    $('#User_Password').val('');
+    $('#User_Nama').val('');
+    $('#User_Role_Id').val('');
+    $('#User_No_Hp').val('');
+    $('#User_Foto').val('');
+    $("input[type='radio'][name='User_Kelamin']").prop('checked', false);
+    $('#label_user_foto').text('Pilih foto..');
+    $('#avatar').attr('src', '');
+}
+// ====================================
+
+// modal tambah user
+$('#btn_tambah_user').on('click', function () {
+    $('#modal_user_label').text(' Edit User ');
+    $('.btn_tambah_user').text('Simpan');
+    clearInputUser();
+})
+// ====================================
+
+// Hapus konten modal input user
+$('.btn_hapus_konten').on('click', function () {
+    clearInputUser();
+})
+// ===================================
+
 // Get file name Foto
 $('#User_Foto').on('change', function () {
     User_Foto = $('#User_Foto').val();
@@ -751,62 +840,56 @@ $('#User_Foto').on('change', function () {
 // Tambah user
 $('.btn_tambah_user').on('click', function (e) {
     // console.log($("input[type='radio'][name='User_Kelamin']:checked").val());
-    if ($('#User_Email').val() != '' &&
-        $('#User_Password').val() != '' &&
-        $('#User_Nama').val() != '' &&
-        $('#User_Role_Id').val() != '') {
+    if ($('.btn_tambah_user').text() == 'Simpan') {
+        if ($('#User_Email').val() != '' &&
+            $('#User_Password').val() != '' &&
+            $('#User_Nama').val() != '' &&
+            $('#User_Role_Id').val() != '') {
 
-        e.preventDefault();
-        uploadFile('User_Foto', 'homecontroller/uploadFile');
-        $.ajax({
-            url: "http://" + URL_API + "/API-E-Money-App/public/users/insert/",
-            type: "POST",
-            dataType: "JSON",
-            data: {
-                User_Email: $('#User_Email').val(),
-                User_Password: $('#User_Password').val(),
-                User_Nama: $('#User_Nama').val(),
-                User_Kelamin: $("input[type='radio'][name='User_Kelamin']:checked").val(),
-                User_Foto: ((User_Foto == '') ? '' : User_Foto),
-                User_No_Hp: (($('#User_No_Hp').val() == '') ? '' : $('#User_No_Hp').val()),
-                User_Role_Id: $('#User_Role_Id').val(),
-                User_Created_By: $('#User_By').val()
-            },
-            success: function (r) {
-                if (r.Status_Code == 200) {
-                    Swal.fire({
-                        type: 'success',
-                        title: 'Berhasil',
-                        text: r.Message
-                    })
-                    // $('#modal_tambah_role').modal('toggle');
-                } else {
+            e.preventDefault();
+            uploadFile('User_Foto', 'homecontroller/uploadFile');
+            $.ajax({
+                url: "http://" + URL_API + "/API-E-Money-App/public/users/insert/",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    User_Email: $('#User_Email').val(),
+                    User_Password: $('#User_Password').val(),
+                    User_Nama: $('#User_Nama').val(),
+                    User_Kelamin: $("input[type='radio'][name='User_Kelamin']:checked").val(),
+                    User_Foto: ((User_Foto == '') ? '' : User_Foto),
+                    User_No_Hp: (($('#User_No_Hp').val() == '') ? '' : $('#User_No_Hp').val()),
+                    User_Role_Id: $('#User_Role_Id').val(),
+                    User_Created_By: $('#User_By').val()
+                },
+                success: function (r) {
+                    if (r.Status_Code == 200) {
+                        Swal.fire({
+                            type: 'success',
+                            title: 'Berhasil',
+                            text: r.Message
+                        })
+                        // $('#modal_tambah_role').modal('toggle');
+                    } else {
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Oops!',
+                            text: 'Maaf input data gagal!'
+                        });
+                    }
+                    // $('#modal_tambah_user').modal('hide');
+                    clearInputUser();
+                    User();
+                },
+                error: function () {
                     Swal.fire({
                         type: 'error',
                         title: 'Oops!',
-                        text: 'Maaf input data gagal!'
-                    });
+                        text: 'Sorry, request is faied, please check your connection!'
+                    })
                 }
-                // $('#modal_tambah_user').modal('hide');
-                $('#User_Email').val('');
-                $('#User_Password').val('');
-                $('#User_Nama').val('');
-                $('#User_Role_Id').val('');
-                $('#User_No_Hp').val('');
-                $('#User_Foto').val('');
-                $("input[type='radio'][name='User_Kelamin']").prop('checked', false);
-                $('#label_user_foto').text('Pilih foto..');
-                $('#avatar').attr('src', '');
-                User();
-            },
-            error: function () {
-                Swal.fire({
-                    type: 'error',
-                    title: 'Oops!',
-                    text: 'Sorry, request is faied, please check your connection!'
-                })
-            }
-        });
+            });
+        }
     }
 
 });

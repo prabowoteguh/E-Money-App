@@ -706,11 +706,11 @@
             <!-- /Modal Edit Role -->
 
             <!-- Modal Tambah User -->
-            <div class="modal fade mt-5" id="modal_tambah_user" tabindex="-1" role="dialog" aria-labelledby="modal_tambah_user_label" aria-hidden="true">
+            <div class="modal fade mt-5 mb-5" id="modal_tambah_user" tabindex="-1" role="dialog" aria-labelledby="modal_user_label" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modal_tambah_user_label">Tambah User</h5>
+                            <h5 class="modal-title" id="modal_user_label">Tambah User</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -778,6 +778,9 @@
                             </div>
                             <input type="hidden" name="User_By" id="User_By" value="<?= $_SESSION['data_user']->User_Nama; ?>">
                             <div class="modal-footer">
+                                <div class="col">
+                                    <button type="button" class="btn btn-warning btn_hapus_konten">Hapus konten</button>
+                                </div>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
                                 <button type="submit" class="btn btn-primary btn_tambah_user">Simpan</button>
                             </div>
