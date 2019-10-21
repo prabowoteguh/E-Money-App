@@ -7,6 +7,8 @@ $('#main_dashboard').on('click', function () {
     $('#main_dashboard').addClass('mm-active');
 });
 
+// #region Fungsi Master Role
+// ----------------------------- * ---------------------- //
 $('#master_role').on('click', function () {
     nonactiveSidebar();
     $('#master_role').addClass('mm-active');
@@ -301,7 +303,12 @@ $('.btn_simpan_role').on('click', function (e) {
         //
     }
 });
+// ----------------------------- * ---------------------- //
+// #endregion End of Fungsi Master Role
 
+
+//#region Fungsi Master User
+// ----------------------------- * ---------------------- //
 $('#master_users').on('click', function () {
     nonactiveSidebar();
     $('#master_users').addClass('mm-active');
@@ -893,7 +900,10 @@ $('.btn_tambah_user').on('click', function (e) {
     }
 
 });
-// ======================================
+
+// ----------------------------- * ---------------------- //
+// #endregion
+
 
 $('#master_mahasiswa').on('click', function () {
     nonactiveSidebar();
