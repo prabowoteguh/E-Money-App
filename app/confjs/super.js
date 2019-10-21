@@ -1,6 +1,6 @@
 // ================= SUPER ADMIN =====================
-const URL_API = 'localhost:8080';
-const BASE_URL = 'http://localhost:8080/E-Money-App/public/';
+const URL_API = '192.168.10.172:8080';
+const BASE_URL = 'http://localhost/E-Money-App/public/';
 
 $('#main_dashboard').on('click', function () {
     nonactiveSidebar();
@@ -920,11 +920,12 @@ $('#master_mahasiswa').on('click', function () {
         },
         success: function (r) {
             if (r.Status_Code == 200) {
-                var data = r.role;
+                var data = r.Mahasiswa;
                 var table = '';
 
+
                 for (let i = 0; i < data.length; i++) {
-                    table += `
+                    table +=`
                         <tr>
                             <td class="text-center text-muted"> #` + (i + 1) + `</td>
                             <td>` + data[i].Mahasiswa_Npm + `</td> 
@@ -946,7 +947,7 @@ $('#master_mahasiswa').on('click', function () {
                 }
 
                 $('#content').html(`
-                    <div class="row">
+                <div class="row">
                     <div class="col-md-12">
                         <div class="main-card mb-3 card">
                             <div class="card-header">Data Mahasiswa
@@ -956,38 +957,42 @@ $('#master_mahasiswa').on('click', function () {
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-responsive">
-                                <table class="align-middle mb-0 table  table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" class="text-center">#</th>
-                                            <th scope="col">NPM</th>
-                                            <th scope="col">Nama</th>
-                                            <th scope="col">Jurusan</th>
-                                            <th scope="col">Angkatan</th>
-                                            <th scope="col">URL Foto</th>
-                                            <th scope="col">Created By</th>
-                                            <th scope="col"  class="text-center">Status</th>
-                                            <th scope="col" class="text-center">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        ` + table + `
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th scope="col" class="text-center">#</th>
-                                            <th scope="col">NPM</th>
-                                            <th scope="col">Nama</th>
-                                            <th scope="col">Jurusan</th>
-                                            <th scope="col">Angkatan</th>
-                                            <th scope="col">URL Foto</th>
-                                            <th scope="col">Created By</th>
-                                            <th scope="col"  class="text-center">Status</th>
-                                            <th scope="col" class="text-center">Aksi</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+                            <div class="card-body">
+                                <div class="">
+                                    <div class="table-responsive">
+                                        <table class="align-middle mb-0 table  table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="text-center">#</th>
+                                                    <th scope="col">NPM</th>
+                                                    <th scope="col">Nama</th>
+                                                    <th scope="col">Jurusan</th>
+                                                    <th scope="col">Angkatan</th>
+                                                    <th scope="col">URL Foto</th>
+                                                    <th scope="col">Created By</th>
+                                                    <th scope="col"  class="text-center">Status</th>
+                                                    <th scope="col" class="text-center">Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                ` + table + `
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th scope="col" class="text-center">#</th>
+                                                    <th scope="col">NPM</th>
+                                                    <th scope="col">Nama</th>
+                                                    <th scope="col">Jurusan</th>
+                                                    <th scope="col">Angkatan</th>
+                                                    <th scope="col">URL Foto</th>
+                                                    <th scope="col">Created By</th>
+                                                    <th scope="col"  class="text-center">Status</th>
+                                                    <th scope="col" class="text-center">Aksi</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                             <div class="d-block text-center card-footer">
                                 <div class="text-center"> <h5></h5> </div>
@@ -1044,6 +1049,23 @@ $('#master_mahasiswa').on('click', function () {
                                     <button type="submit" id="btn_simpan_mahasiswa" class="btn btn-primary">Simpan</button>
                                 </div>
                             </form>
+                            <?php
+                              if (@$_POST['tambah']) {
+                                  $Mahasiswa_Npm = $connection->conn->real_escape_string($_POST['Mahasiswa_Npm']);
+                                  $Mahasiswa_Nama = $connection->conn->real_escape_string($_POST['Mahasiswa_Nama']);
+                                  $Mahasiswa_Jurusan = $connection->conn->real_escape_string($_POST['Mahasiswa_Jurusan']);
+                                  
+                                  $extensi = explode(".", $_FILES['Mahasiswa_Foto']['name']);
+                                  $Mahasiswa_Foto = "mhs-".round(microtime(true)).".".end($extensi);
+                                  $sumber = $_FILES['Mahasiswa_Foto']['tmp_name'];
+                                  $upload =  move_uploaded_file($sumber, "assets/images/avatars/".$Mahasiswa_Foto);
+                                  if ($upload) {
+                                      
+                                  } else {
+                                    echo "<script>alert('Upload gambar gagal!')</script>";
+                                  }
+                              }
+                              ?>
                         </div>
                     </div>
                 </div>

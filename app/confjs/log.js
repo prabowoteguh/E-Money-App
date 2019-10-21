@@ -1,4 +1,5 @@
 // ================= LOGIN FUNCTION =================
+console.log('woke');
 
 $('#btn_login').on('click', function (e) {
     e.preventDefault();
@@ -18,8 +19,9 @@ $('#btn_login').on('click', function (e) {
             text: 'Please provide an valid password!.'
         });
     } else {
+        console.log('Login');
         $.ajax({
-            url: "http://localhost:8080/API-E-Money-App/public/login/",
+            url: "http://192.168.10.172:8080/API-E-Money-App/public/login/",
             type: "POST",
             dataType: "JSON",
             data: {
@@ -49,4 +51,3 @@ $('#btn_login').on('click', function (e) {
     }
 });
 // ================= /LOGIN FUNCTION =================
-console.log('OK');
