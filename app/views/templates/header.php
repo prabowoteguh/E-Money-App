@@ -101,12 +101,12 @@
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                            <!-- <button type="button" tabindex="0" class="dropdown-item">User Account</button>
-                                            <button type="button" tabindex="0" class="dropdown-item">Settings</button> -->
+                                            <button type="button" tabindex="0" class="dropdown-item" disabled> <i class="fa fa-gear"></i><span class="pl-2"> User Account</span></button>
+                                            <button id="btn_change_password" type="button" tabindex="0" class="dropdown-item" data-toggle="modal" data-target="#modal_ubah_password" data-backdrop="false"> <i class="fa fa-key"></i><span class="pl-2"> Change Password</span></button>
                                             <!-- <h6 tabindex="-1" class="dropdown-header">Header</h6> -->
                                             <!-- <button type="button" tabindex="0" class="dropdown-item">Actions</button> -->
-                                            <!-- <div tabindex="-1" class="dropdown-divider"></div> -->
-                                            <a tabindex="0" class="dropdown-item" href="<?= BASE_URL ?>logincontroller/logout">Logout</a>
+                                            <div tabindex="-1" class="dropdown-divider"></div>
+                                            <a tabindex="0" class="dropdown-item" href="<?= BASE_URL ?>logincontroller/logout"> <i class="fa fa-power-off"></i><span class="pl-2"> Logout</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -127,5 +127,74 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Modal Ubah Password -->
+                <div class="modal fade mt-5" id="modal_ubah_password" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Ubah Password</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="widget-content p-0 mb-5">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left mr-3">
+                                            <div class="widget-content-left">
+                                                <img width="40" class="rounded-circle" src="<?= BASE_URL ?>assets/images/avatars/<?= (($_SESSION['data_user']->User_Foto == '') ? 'student.png' : $_SESSION['data_user']->User_Foto) ?>" alt="avatar">
+                                            </div>
+                                        </div>
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading"><?= $_SESSION['data_user']->User_Nama ?></div>
+                                            <div class="widget-subheading opacity-7"><?= $_SESSION['data_user']->User_Email ?></div>
+                                        </div>
+                                        <div class="widget-content-right">
+                                            <button class="btn" id="btn_see_password"><i id="lihat_password" class="fa fa-3x fa-eye-slash"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form method="POST" class="needs-validation" novalidate>
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <label for="old_password">Current Password</label>
+                                            <input type="password" class="form-control" id="old_password" placeholder="" name="old_password" required>
+                                            <div class="invalid-feedback">
+                                                Please complete your curent password!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <label for="new_password">New Password</label>
+                                            <input type="password" class="form-control" id="new_password" placeholder="" name="new_password" required>
+                                            <div class="invalid-feedback">
+                                                Please complete your password!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <label for="verification_password">Password Verification</label>
+                                            <input type="password" class="form-control" id="verification_password" placeholder="" name="verification_password" required>
+                                            <div class="invalid-feedback">
+                                                Your password doesn't match!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="current_password" id="current_password" value="<?= $_SESSION['data_user']->User_Password; ?>">
+                                    <input type="hidden" name="User_Id" id="User_Id" value="<?= $_SESSION['data_user']->User_Id; ?>">
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                                        <button type="submit" class="btn btn-primary btn_save_password">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Modal Ubah Password -->
+
             </div>
         </div>
