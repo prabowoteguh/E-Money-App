@@ -223,6 +223,7 @@ function refreshMahasiswa() {
                         },
                         success: function (r) {
                             if (r.Status_Code == 200) {
+                                $('#Mahasiswa_Tahun_Angkatan').prop('disabled', true);
                                 $('#modal_tambah_mahasiswa').modal({
                                     backdrop: false
                                 });
@@ -257,7 +258,7 @@ function refreshMahasiswa() {
                     });
                     // ajax get data user by id
 
-
+                    //simpan data setelah edit
                     $('.btn_tambah_mahasiswa').on('click', function (e) {
                         if ($('.btn_tambah_mahasiswa').text() == 'Simpan Perubahan') {
                             if ($('#Mahasiswa_Npm').val() != '' && $('#Mahasiswa_Nama').val() != '' && $('#Mahasiswa_Jurusan').val() != '' && $('#Mahasiswa_Tahun_Angkatan').val() != '') {
@@ -309,6 +310,7 @@ function refreshMahasiswa() {
                             }
                         }
                     });
+                    //========================
                 }
 
             });
@@ -470,6 +472,7 @@ function clearInputMahasiswa() {
     $('#Mahasiswa_Foto').val('');
     $('#label_mahasiswa_foto').text('Pilih foto..');
     $('#avatar_mahasiswa').attr('src', '');
+    $('#Mahasiswa_Tahun_Angkatan').prop('disabled', false);
 }
 // ====================================
 

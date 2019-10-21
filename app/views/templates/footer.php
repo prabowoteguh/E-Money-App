@@ -48,6 +48,7 @@
                <!-- Function JS -->
                <script src="<?= BASE_URL ?>../app/confjs/global.js"></script>
 
+
                <!-- ConfJS untuk fungsi2 setiap views role -->
                <?php
 
