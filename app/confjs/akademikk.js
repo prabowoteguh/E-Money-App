@@ -1,7 +1,7 @@
 // ================= ADMIN AKADEMIK =====================
 const URL_API = '192.168.10.172:8080';
 const BASE_URL = 'http://localhost/E-Money-App/public/';
-// console.log('Akademik');
+console.log('Akademik');
 
 $('#main_dashboard').on('click', function () {
     nonactiveSidebar();
@@ -156,7 +156,7 @@ function refreshMahasiswa() {
             // data table
             $('#table_mahasiswa').DataTable();
 
-            // edit User
+            // edit Mahasiswa
             $('.edit_mahasiswa').on('click', function () {
                 // data-toggle="modal" data-target="#modal_tambah_role"
                 var Mahasiswa_Nama = $(this).data('mahasiswa');
@@ -314,13 +314,13 @@ function refreshMahasiswa() {
                 }
 
             });
-            // --Edit User
+            // --Edit Mahasiswa
 
-            // Delete User
+            // Delete Mahasiswa
             $('.hapus_mahasiswa').on('click', function () {
                 Swal.fire({
                     title: 'Apakah anda yakin?',
-                    text: "Data " + $(this).data('mahasiswa') + " akan terhapus!",
+                    text: "Data " + $(this).data('mahasiswa') + "( " + $(this).data('id') + " ) akan terhapus!",
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
@@ -331,11 +331,11 @@ function refreshMahasiswa() {
                         $.ajax({
                             url: "http://" + URL_API + "/API-E-Money-App/public/mahasiswas/delete/",
                             type: "POST",
-                            // dataType: "JSON",
+                            dataType: "JSON",
                             contentType: "application/x-www-form-urlencoded",
                             data: {
                                 Mahasiswa_Id: $(this).data('id'),
-                                Mahasiswa_Deleted_By: $('#Mahasiswa_By').val()
+                                Mahasiswa_Deleted_By: $('#Mahasiswa_Deleted_By').val()
                             },
                             success: function (r) {
                                 if (r.Status_Code == 200) {
@@ -364,9 +364,9 @@ function refreshMahasiswa() {
                     }
                 })
             });
-            // Delete User ---
+            // Delete Mahasiswa ---
 
-            // Ubah status aktif User
+            // Ubah status aktif Mahasiswa
             $('.aktif_mahasiswa').on('click', function () {
                 Swal.fire({
                     title: 'Apakah anda yakin?',
@@ -414,7 +414,7 @@ function refreshMahasiswa() {
                     }
                 })
             });
-            // Ubah status aktif User ---
+            // Ubah status aktif Mahasiswa ---
         }
 
     });
@@ -476,7 +476,13 @@ function clearInputMahasiswa() {
 }
 // ====================================
 
-// modal tambah user
+// Get NPM
+$('#Mahasiswa_Jurusan').on('change', function () {
+    $('#Mahasiswa_Npm').val()
+});
+// ====================================
+
+// modal tambah Mahasiswa
 $('#btn_tambah_mahasiswa').on('click', function () {
     $('#modal_mahasiswa_label').text(' Tambah Data Mahasiswa ');
     $('.btn_tambah_mahasiswa').text('Simpan');
@@ -501,7 +507,7 @@ $('#Mahasiswa_Foto').on('change', function () {
 });
 // =====================================
 
-// Tambah user
+// Tambah Mahasiswa
 $('.btn_tambah_mahasiswa').on('click', function (e) {
     // console.log($("input[type='radio'][name='User_Kelamin']:checked").val());
     if ($('.btn_tambah_mahasiswa').text() == 'Simpan') {
