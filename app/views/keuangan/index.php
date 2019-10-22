@@ -107,7 +107,6 @@
         </div>
     </div>
     <!-- ======= SIDE BAR ======== -->
-
     <div class="app-main__outer">
         <div class="app-main__inner">
 
@@ -120,13 +119,14 @@
                             </i>
                         </div>
                         <div><span id="title_page">Dashboard</span> | E-Money Apps
-                            <div class="page-title-subheading">Sistem Informasi E-Money Politeknik Praktisi Bandung.
-                            </div>
+                            <div class="page-title-subheading">Sistem Informasi E-Money Politeknik Praktisi Bandung.</div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- ======= /TITLE PAGE ======== -->
+
+
 
             <!-- ======= MAIN CONTENT ======== -->
             <div class="inner-content" id="content">
@@ -179,7 +179,7 @@
             <!-- ======= /MAIN CONTENT ======== -->
 
             <!-- Modal Tambah Mahasiswa -->
-            <div class="modal fade mt-5 mb-5" id="modal_tambah_mahasiswa" tabindex="-1" role="dialog" aria-labelledby="modal_mahasiswa_label" aria-hidden="true">
+            <!-- <div class="modal fade mt-5 mb-5" id="modal_tambah_mahasiswa" tabindex="-1" role="dialog" aria-labelledby="modal_mahasiswa_label" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -245,7 +245,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="hidden" name="Mahasiswa_By" id="Mahasiswa_By" value="<?= $_SESSION['data_user']->User_Nama; ?>">
+                            <input type="hidden" name="Mahasiswa_By" id="Mahasiswa_Deleted_By" value="<?= $_SESSION['data_user']->User_Nama; ?>">
                             <div class="modal-footer">
                                 <div class="col">
                                     <button type="button" class="btn btn-warning btn_hapus_konten">Hapus konten</button>
@@ -256,7 +256,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- /Modal Tambah User -->
 
         </div>
