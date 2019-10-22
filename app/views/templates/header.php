@@ -61,13 +61,13 @@
             </div>
             <div class="app-header__content">
                 <div class="app-header-left">
-                    <div class="search-wrapper">
+                    <!-- <div class="search-wrapper">
                         <div class="input-holder">
                             <input type="text" class="search-input" placeholder="Type to search">
                             <button class="search-icon"><span></span></button>
                         </div>
                         <button class="close"></button>
-                    </div>
+                    </div> -->
                     <!-- <ul class="header-menu nav">
                         <li class="nav-item">
                             <a href="javascript:void(0);" class="nav-link">
@@ -185,6 +185,7 @@
                                     </div>
                                     <input type="hidden" name="current_password" id="current_password" value="<?= $_SESSION['data_user']->User_Password; ?>">
                                     <input type="hidden" name="User_Id" id="User_Id" value="<?= $_SESSION['data_user']->User_Id; ?>">
+                                    <input type="hidden" name="User_Nama" id="User_Nama" value="<?= $_SESSION['data_user']->User_Nama; ?>">
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
                                         <button type="submit" class="btn btn-primary btn_save_password">Simpan</button>
