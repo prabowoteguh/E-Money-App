@@ -1,5 +1,60 @@
 // ================= ADMIN AKADEMIK =====================
-console.log('Akademik');
+// console.log('Akademik');
+$(function laporanTotalMahasiswa() {
+    // Akuntansi
+    $.ajax({
+        url: "http://localhost:8080/API-E-Money-App/public/mahasiswas/getDataTotalMahasiswa",
+        type: "POST",
+        dataType: "JSON",
+        data: {
+            Mahasiswa_Jurusan: 'Akuntansi'
+        },
+        success: function (r) {
+            var data = r.Mahasiswa;
+            var count = 0;
+            for (let i = 0; i < data.length; i++) {
+                count = (parseInt(count) + parseInt(data[i].Data_Mahasiswa));
+            }
+            $('#Mahasiswa_Akuntansi').text(count);
+        }
+    });
+
+    // Manajemen Informatika
+    $.ajax({
+        url: "http://localhost:8080/API-E-Money-App/public/mahasiswas/getDataTotalMahasiswa",
+        type: "POST",
+        dataType: "JSON",
+        data: {
+            Mahasiswa_Jurusan: 'Manajemen Informatika'
+        },
+        success: function (r) {
+            var data = r.Mahasiswa;
+            var count = 0;
+            for (let i = 0; i < data.length; i++) {
+                count = (parseInt(count) + parseInt(data[i].Data_Mahasiswa));
+            }
+            $('#Mahasiswa_MI').text(count);
+        }
+    });
+
+    // Perpajakan
+    $.ajax({
+        url: "http://localhost:8080/API-E-Money-App/public/mahasiswas/getDataTotalMahasiswa",
+        type: "POST",
+        dataType: "JSON",
+        data: {
+            Mahasiswa_Jurusan: 'Perpajakan'
+        },
+        success: function (r) {
+            var data = r.Mahasiswa;
+            var count = 0;
+            for (let i = 0; i < data.length; i++) {
+                count = (parseInt(count) + parseInt(data[i].Data_Mahasiswa));
+            }
+            $('#Mahasiswa_Pajak').text(count);
+        }
+    });
+});
 
 $('#main_dashboard').on('click', function () {
     nonactiveSidebar();
@@ -23,7 +78,7 @@ $('#master_mahasiswa').on('click', function () {
     $('#title_page').text('Master Data Mahasiswa');
     $('#content').html('');
 
-    // Mahasiswa();
+    Mahasiswa();
 });
 
 function Mahasiswa() {
@@ -34,7 +89,7 @@ var Mahasiswa_Qr_Code = '';
 
 function refreshMahasiswa() {
     $.ajax({
-        url: "http://" + URL_API + "/API-E-Money-App/public/mahasiswas/show/",
+        url: "http://" + URL_API + "/API-E-Money-App/public/mahasiswas/",
         type: "GET",
         // dataType: "JSON",
         data: {
@@ -210,7 +265,7 @@ function refreshMahasiswa() {
                     $('#modal_mahasiswa_label').text(' Edit Mahasiswa ');
                     $('.btn_tambah_mahasiswa').text('Simpan Perubahan');
 
-                    console.log('OK');
+                    // console.log('OK');
                     $.ajax({
                         url: "http://" + URL_API + "/API-E-Money-App/public/mahasiswas/getDataById/",
                         type: "POST",
@@ -231,7 +286,7 @@ function refreshMahasiswa() {
                                 // Pengisian data dari response
                                 $('#Mahasiswa_Npm').val(Mahasiswa.Mahasiswa_Npm);
                                 $('#Mahasiswa_Nama').val(Mahasiswa.Mahasiswa_Nama);
-                                $('#Mahasiswa_Jurusan').val(Mahasiswa.Mahasiswa_Jurusan);
+                                $('#Mahasiswa_Jurusan>option:selected').text(Mahasiswa.Mahasiswa_Jurusan);
                                 $('#Mahasiswa_Tahun_Angkatan').val(Mahasiswa.Mahasiswa_Tahun_Angkatan);
                                 $('#label_mahasiswa_foto').text(Mahasiswa.Mahasiswa_Foto);
                                 $('#avatar_mahasiswa').attr('src', "assets/images/avatars/" + Mahasiswa.Mahasiswa_Foto);
@@ -244,7 +299,6 @@ function refreshMahasiswa() {
                                     text: r.Message
                                 });
                             }
-                            Mahasiswa();
                         },
                         error: function () {
                             Swal.fire({
@@ -254,12 +308,12 @@ function refreshMahasiswa() {
                             });
                         }
                     });
-                    // ajax get data user by id
+                    // ajax get data mahasiswa by id
 
                     //simpan data setelah edit
                     $('.btn_tambah_mahasiswa').on('click', function (e) {
                         if ($('.btn_tambah_mahasiswa').text() == 'Simpan Perubahan') {
-                            if ($('#Mahasiswa_Npm').val() != '' && $('#Mahasiswa_Nama').val() != '' && $('#Mahasiswa_Jurusan').val() != '' && $('#Mahasiswa_Tahun_Angkatan').val() != '') {
+                            if ($('#Mahasiswa_Npm').val() != '' && $('#Mahasiswa_Nama').val() != '' && $('#Mahasiswa_Jurusan option:selected').html() != '' && $('#Mahasiswa_Tahun_Angkatan').val() != '') {
 
                                 e.preventDefault();
                                 uploadFile('Mahasiswa_Foto', 'homecontroller/uploadFile');
@@ -271,10 +325,10 @@ function refreshMahasiswa() {
                                     contentType: "application/x-www-form-urlencoded",
                                     data: {
                                         Mahasiswa_Nama: $('#Mahasiswa_Nama').val(),
-                                        Mahasiswa_Jurusan: $('#Mahasiswa_Jurusan').val(),
+                                        Mahasiswa_Jurusan: $('#Mahasiswa_Jurusan option:selected').html(),
                                         // Mahasiswa_Tahun_Angkatan: $('#Mahasiswa_Tahun_Angkatan').val(),
                                         Mahasiswa_Foto: ((Mahasiswa_Foto == '') ? '' : Mahasiswa_Foto),
-                                        Mahasiswa_Updated_By: $('#Mahasiswa_By').val(),
+                                        Mahasiswa_Updated_By: $('#Mahasiswa_Deleted_By').val(),
                                         Mahasiswa_Id: Mahasiswa_Id
                                     },
                                     success: function (r) {
@@ -413,6 +467,14 @@ function refreshMahasiswa() {
                 })
             });
             // Ubah status aktif Mahasiswa ---
+
+            // modal tambah Mahasiswa
+            $('#btn_tambah_mahasiswa').on('click', function () {
+                $('#modal_mahasiswa_label').text(' Tambah Data Mahasiswa ');
+                $('.btn_tambah_mahasiswa').text('Simpan');
+                clearInputMahasiswa();
+            })
+            // ====================================
         }
 
     });
@@ -474,18 +536,53 @@ function clearInputMahasiswa() {
 }
 // ====================================
 
-// Get NPM
+// Get NPM Automatic
 $('#Mahasiswa_Jurusan').on('change', function () {
-    $('#Mahasiswa_Npm').val()
-});
-// ====================================
+    var Mahasiswa_Jurusan = ($("#Mahasiswa_Jurusan option:selected").html());
+    var Mahasiswa_Tahun_Angkatan = $('#Mahasiswa_Tahun_Angkatan').val();
 
-// modal tambah Mahasiswa
-$('#btn_tambah_mahasiswa').on('click', function () {
-    $('#modal_mahasiswa_label').text(' Tambah Data Mahasiswa ');
-    $('.btn_tambah_mahasiswa').text('Simpan');
-    clearInputMahasiswa();
-})
+    // ambil urutan npm dari jurusan dan tahun angkatan
+    var Npm = '';
+    $.ajax({
+        url: "http://" + URL_API + "/API-E-Money-App/public/mahasiswas/getDataNpm/",
+        type: "POST",
+        dataType: "JSON",
+        data: {
+            Mahasiswa_Jurusan: Mahasiswa_Jurusan,
+            Mahasiswa_Tahun_Angkatan: $('#Mahasiswa_Tahun_Angkatan').val()
+        },
+        success: function (r) {
+            Urut = (parseInt(r.Mahasiswa.Npm) + 1);
+            Npm = Urut.toString().padStart(3, "0");
+            // console.log(Npm);
+            $('#Mahasiswa_Npm').val($('#Mahasiswa_Jurusan').val() + Mahasiswa_Tahun_Angkatan.substring(2) + Npm);
+        }
+    });
+
+});
+
+$('#Mahasiswa_Tahun_Angkatan').on('change', function () {
+    var Mahasiswa_Jurusan = ($("#Mahasiswa_Jurusan option:selected").html());
+    var Mahasiswa_Tahun_Angkatan = ($('#Mahasiswa_Tahun_Angkatan').val()).substring(2);
+
+    // ambil urutan npm dari jurusan dan tahun angkatan
+    var Npm = '';
+    $.ajax({
+        url: "http://" + URL_API + "/API-E-Money-App/public/mahasiswas/getDataNpm/",
+        type: "POST",
+        dataType: "JSON",
+        data: {
+            Mahasiswa_Jurusan: Mahasiswa_Jurusan,
+            Mahasiswa_Tahun_Angkatan: $('#Mahasiswa_Tahun_Angkatan').val()
+        },
+        success: function (r) {
+            Urut = (parseInt(r.Mahasiswa.Npm) + 1);
+            Npm = Urut.toString().padStart(3, "0");
+            // console.log(Npm);
+            $('#Mahasiswa_Npm').val($('#Mahasiswa_Jurusan').val() + Mahasiswa_Tahun_Angkatan + Npm);
+        }
+    });
+});
 // ====================================
 
 // Hapus konten modal input user
@@ -523,10 +620,10 @@ $('.btn_tambah_mahasiswa').on('click', function (e) {
                 data: {
                     Mahasiswa_Npm: $('#Mahasiswa_Npm').val(),
                     Mahasiswa_Nama: $('#Mahasiswa_Nama').val(),
-                    Mahasiswa_Jurusan: $('#Mahasiswa_Jurusan').val(),
+                    Mahasiswa_Jurusan: $("#Mahasiswa_Jurusan option:selected").html(),
                     Mahasiswa_Foto: ((Mahasiswa_Foto == '') ? '' : Mahasiswa_Foto),
                     Mahasiswa_Tahun_Angkatan: $('#Mahasiswa_Tahun_Angkatan').val(),
-                    Mahasiswa_Created_By: $('#Mahasiswa_By').val()
+                    Mahasiswa_Created_By: $('#Mahasiswa_Deleted_By').val()
                 },
                 success: function (r) {
                     if (r.Status_Code == 200) {
@@ -544,8 +641,8 @@ $('.btn_tambah_mahasiswa').on('click', function (e) {
                         });
                     }
                     // $('#modal_tambah_user').modal('hide');
-                    clearInputUser();
-                    User();
+                    clearInputMahasiswa();
+                    Mahasiswa();
                 },
                 error: function () {
                     Swal.fire({
@@ -573,8 +670,8 @@ $('#cetak_kartu').on('click', function () {
 $('#report_data_mahasiswa').on('click', function () {
     nonactiveSidebar();
     $('#report_data_mahasiswa').addClass('mm-active');
-    // $('#title_page').text('Laporan Data Mahasiswa');
-    // $('#content').html('');
+    $('#title_page').text('Laporan Data Mahasiswa');
+    $('#content').html('');
 });
 
 $('#report_mahasiswa_jurusan').on('click', function () {
