@@ -70,12 +70,12 @@
 
                     <li class="app-sidebar__heading">Laporan</li>
                     <li>
-                        <a id="report_data_mahasiswa" href="javascript:void(0);">
+                        <a id="report_data_mahasiswa" href="javascript:void(0);" class="disabled">
                             <i class="metismenu-icon fa fa-chart-bar"></i>
                             Laporan Data Mahasiswa
-                            <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                            <!-- <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i> -->
                         </a>
-                        <ul>
+                        <!-- <ul>
                             <li>
                                 <a id="report_mahasiswa_jurusan" href="javascript:void(0);>
                                     <i class=" metismenu-icon"></i>
@@ -88,7 +88,7 @@
                                     </i>Keseluruhan
                                 </a>
                             </li>
-                        </ul>
+                        </ul> -->
                     </li>
                 </ul>
             </div>
@@ -129,7 +129,7 @@
                                     <div class="widget-subheading">Data 1 tahun terakhir</div>
                                 </div>
                                 <div class="widget-content-right">
-                                    <div class="widget-numbers text-white"><span>45</span></div>
+                                    <div class="widget-numbers text-white"><span id="Mahasiswa_Akuntansi"></span></div>
                                 </div>
                             </div>
                         </div>
@@ -142,7 +142,7 @@
                                     <div class="widget-subheading">Data 1 tahun terakhir</div>
                                 </div>
                                 <div class="widget-content-right">
-                                    <div class="widget-numbers text-white"><span>35</span></div>
+                                    <div class="widget-numbers text-white"><span id="Mahasiswa_MI"></span></div>
                                 </div>
                             </div>
                         </div>
@@ -155,7 +155,7 @@
                                     <div class="widget-subheading">Data 1 tahun terakhir</div>
                                 </div>
                                 <div class="widget-content-right">
-                                    <div class="widget-numbers text-white"><span>58</span></div>
+                                    <div class="widget-numbers text-white" id="Mahasiswa_Pajak"><span></span></div>
                                 </div>
                             </div>
                         </div>
@@ -194,9 +194,9 @@
                                         <label for="Mahasiswa_Jurusan">Jurusan <span class="text-danger">*</span></label>
                                         <select class="form-control" id="Mahasiswa_Jurusan" name="Mahasiswa_Jurusan" required>
                                             <option value="">-- PIlih Jurusan ---</option>
-                                            <option value="Akuntansi">Akuntansi</option>
-                                            <option value="Manajemen Informatika">Manajemen Informatika</option>
-                                            <option value="">Perpajakan</option>
+                                            <option value="01">Akuntansi</option>
+                                            <option value="02">Manajemen Informatika</option>
+                                            <option value="03">Perpajakan</option>
                                         </select>
                                         <div class="invalid-feedback">
                                             Pilih jurusan terlebih dahulu!

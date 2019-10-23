@@ -103,6 +103,8 @@
 
 <script src="<?= BASE_URL ?>assets/scripts/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="<?= BASE_URL ?>../app/confjs/global.js"></script>
+
 <script src="<?= BASE_URL ?>../app/confjs/login.js"></script>
 
 </html>

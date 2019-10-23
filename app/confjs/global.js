@@ -1,3 +1,6 @@
+// const URL_API = '192.168.10.172:8080';
+const BASE_URL = 'http://localhost:8080/E-Money-App/public/';
+const URL_API = 'localhost:8080';
 // console.log('Global');
 
 // #region Change Password
