@@ -73,11 +73,11 @@ function refreshRole() {
                                                 <tr>
                                                     <th scope="col" class="text-center">#</th>
                                                     <th scope="col">Nama Role</th>
-                                                    <th scope="col">Created By</th>
-                                                    <th scope="col">Created Date</th>
-                                                    <th scope="col"  class="text-center">Status</th> 
-                                                    <th scope="col">Deleted By</th>
-                                                    <th scope="col">Deleted Date</th>
+                                                    <th scope="col">Admin</th>
+                                                    <th scope="col">Tanggal Dibuat</th>
+                                                    <th scope="col"  class="text-center">Status Hapus</th> 
+                                                    <th scope="col">Hapus Oleh</th>
+                                                    <th scope="col">Tanggal Hapus</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -88,11 +88,11 @@ function refreshRole() {
                                                 <tr>
                                                     <th scope="col" class="text-center">#</th>
                                                     <th scope="col">Nama Role</th>
-                                                    <th scope="col">Created By</th>
-                                                    <th scope="col">Created Date</th>
-                                                    <th scope="col"  class="text-center">Status</th>
-                                                    <th scope="col">Deleted By</th>
-                                                    <th scope="col">Deleted Date</th>
+                                                    <th scope="col">Admin</th>
+                                                    <th scope="col">Tanggal Dibuat</th>
+                                                    <th scope="col"  class="text-center">Status Hapus</th>
+                                                    <th scope="col">Hapus Oleh</th>
+                                                    <th scope="col">Tanggal Hapus</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </tfoot>
@@ -305,8 +305,7 @@ $('.btn_simpan_role').on('click', function (e) {
 // #endregion End of Fungsi Master Role
 
 
-//#region Fungsi Master User
-// ----------------------------- * ---------------------- //
+// #region Fungsi Master User
 $('#master_users').on('click', function () {
     nonactiveSidebar();
     $('#master_users').addClass('mm-active');
@@ -319,6 +318,7 @@ $('#master_users').on('click', function () {
 function User() {
     refreshUsers();
 }
+
 var User_Foto = '';
 
 function refreshUsers() {
@@ -396,11 +396,11 @@ function refreshUsers() {
                                                     <th scope="col">Nama User</th>
                                                     <th scope="col">Role</th>
                                                     <th scope="col">Kelamin</th>
-                                                    <th scope="col">Created By</th>
-                                                    <th scope="col">Created Date</th>
-                                                    <th scope="col"  class="text-center">Status</th> 
-                                                    <th scope="col">Deleted By</th>
-                                                    <th scope="col">Deleted Date</th>
+                                                    <th scope="col">Admin</th>
+                                                    <th scope="col">Tanggal Dibuat</th>
+                                                    <th scope="col"  class="text-center">Status Aktif</th> 
+                                                    <th scope="col">Hapus Oleh</th>
+                                                    <th scope="col">Tanggal Hapus</th>
                                                     <th scope="col"  class="text-center">Status Hapus</th> 
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
@@ -414,11 +414,11 @@ function refreshUsers() {
                                                     <th scope="col">Nama User</th>
                                                     <th scope="col">Role</th>
                                                     <th scope="col">Kelamin</th>
-                                                    <th scope="col">Created By</th>
-                                                    <th scope="col">Created Date</th>
-                                                    <th scope="col"  class="text-center">Status</th> 
-                                                    <th scope="col">Deleted By</th>
-                                                    <th scope="col">Deleted Date</th>
+                                                    <th scope="col">Admin</th>
+                                                    <th scope="col">Tanggal Dibuat</th>
+                                                    <th scope="col"  class="text-center">Status Aktif</th> 
+                                                    <th scope="col">Hapus Oleh</th>
+                                                    <th scope="col">Tanggal Hapus</th>
                                                     <th scope="col"  class="text-center">Status Hapus</th> 
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
@@ -898,7 +898,8 @@ $('.btn_tambah_user').on('click', function (e) {
     }
 
 });
-// #endregion ===================
+
+//#endregion ======================
 
 
 // #region Master Data Mahasiswa
@@ -991,11 +992,11 @@ function refreshMahasiswa() {
                                                     <th scope="col" class="text-center">#</th>
                                                     <th scope="col">Nama Mahasiswa</th>
                                                     <th scope="col">Jurusan</th>
-                                                    <th scope="col">Created By</th>
-                                                    <th scope="col">Created Date</th>
-                                                    <th scope="col"  class="text-center">Status</th> 
-                                                    <th scope="col">Deleted By</th>
-                                                    <th scope="col">Deleted Date</th>
+                                                    <th scope="col">Admin</th>
+                                                    <th scope="col">Tanggal Dibuat</th>
+                                                    <th scope="col"  class="text-center">Status Aktif</th> 
+                                                    <th scope="col">Hapus Oleh</th>
+                                                    <th scope="col">Tanggal Dihapus</th>
                                                     <th scope="col"  class="text-center">Status Hapus</th> 
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
@@ -1008,11 +1009,11 @@ function refreshMahasiswa() {
                                                     <th scope="col" class="text-center">#</th>
                                                     <th scope="col">Nama Mahasiswa</th>
                                                     <th scope="col">Jurusan</th>
-                                                    <th scope="col">Created By</th>
-                                                    <th scope="col">Created Date</th>
-                                                    <th scope="col"  class="text-center">Status</th> 
-                                                    <th scope="col">Deleted By</th>
-                                                    <th scope="col">Deleted Date</th>
+                                                    <th scope="col">Admin</th>
+                                                    <th scope="col">Tanggal Dibuat</th>
+                                                    <th scope="col"  class="text-center">Status Aktif</th> 
+                                                    <th scope="col">Hapus Oleh</th>
+                                                    <th scope="col">Tanggal Dihapus</th>
                                                     <th scope="col"  class="text-center">Status Hapus</th> 
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
@@ -1714,13 +1715,264 @@ $('#tr_penjualan').on('click', function () {
 
 });
 
+// #region Transaksi Top Up E-Money
 $('#tr_eMoney').on('click', function () {
     nonactiveSidebar();
     $('#tr_eMoney').addClass('mm-active');
     $('#title_page').text('Data Transaksi E-Money');
     $('#content').html('');
 
+    $('#content').html(`
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-card mb-3 card">
+
+                <div class="card-body">
+                    <div class="alert alert-success fade show mb-3">
+                        <h5 class="alert-heading">Selamat Datang!</h5>
+                        <p>Silakan lakukan pencarian berdasarkan NPM Mahasiswa untuk melakukan Top Up E-Money.</p>
+                    </div>
+                    <div class="search-wrapper p-3">
+                        <div class="input-holder">
+                            <input type="text" class="search-input" id="search_npm" name="search_npm" placeholder="Type to search">
+                            <button class="search-icon"><span></span></button>
+                        </div>
+                        <button class="close ml-3"></button>
+                        
+                        <!-- ======= DROPDOWN SEARCH ======== -->
+                        <a id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                        <div tabindex="-1" aria-labelledby="dropdownMenuButton" class="dropdown-menu myDropdown"></div>   
+                        <!-- ======= /DROPDOWN SEARCH ======== -->                 
+                    </div>
+                </div>
+
+                <div class="d-block text-center card-footer">
+                    <div id="content-pencarian-mahasiswa"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    `);
+
+    // #region ANIMASI SEARCH 
+    $(".search-icon").click(function () {
+        $(this).parent().parent().addClass("active");
+    });
+
+    $(".search-wrapper .close").click(function () {
+        $(this).parent().removeClass("active");
+    });
+    // #endregion END OF ANIMASI SEARCH 
+
+    // PENCARIAN MAHASISWA BY NPM UNTUK MELAKUKAN TOPUP
+    $('#search_npm').on('keyup', function () {
+        // console.log($('#search_npm').val());
+        if ($('#search_npm').val() != '') {
+            $.ajax({
+                url: "http://" + URL_API + "/API-E-Money-App/public/mahasiswas/getDataLikeNpm/",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    Mahasiswa_Npm: $('#search_npm').val()
+                },
+                success: function (r) {
+                    var m = r.Mahasiswa;
+                    var item = '';
+                    if (m.length > 0) {
+                        $('.myDropdown').html('');
+                        $('.dropdownMenuButton').dropdown('toggle');
+                        for (let i = 0; i < m.length; i++) {
+                            item += `
+                            <button type="button" tabindex="0" class="dropdown-item search-item" data-npm="` + m[i].Mahasiswa_Npm + `" data-id="` + m[i].Mahasiswa_Id + `">
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left mr-3">
+                                            <div class="widget-content-left">
+                                                <img width="40" class="rounded-circle" src="` + BASE_URL + `assets/images/avatars/` + ((m[i].Mahasiswa_Foto == '') ? 'student.png' : m[i].Mahasiswa_Foto) + `" alt="avatar">
+                                            </div>
+                                        </div>
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading">` + m[i].Mahasiswa_Nama + `</div>
+                                            <div class="widget-subheading opacity-7">` + m[i].Mahasiswa_Npm + `</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>`;
+                        }
+                        $('.myDropdown').html(item);
+                        $('.myDropdown').show();
+                        $('.dropdownMenuButton').click();
+
+                    } else {
+                        $('.myDropdown').html('');
+                        $('[data-toggle="dropdown"]').parent().removeClass('open');
+                        $('.myDropdown').hide();
+                    }
+
+                    $('.search-item').on('click', function () {
+                        $('.myDropdown').hide();
+                        $('#search_npm').val('');
+                        $('.close').click();
+
+                        var Mahasiswa_Npm = $(this).data('npm');
+                        $('#content-pencarian-mahasiswa').html('');
+                        $.ajax({
+                            url: "http://" + URL_API + "/API-E-Money-App/public/mahasiswas/getDataByNpm/",
+                            type: "POST",
+                            dataType: "JSON",
+                            data: {
+                                Mahasiswa_Npm: Mahasiswa_Npm
+                            },
+                            success: function (r) {
+                                if (r.Status_Code == 200) {
+                                    var mhs = r.Mahasiswa;
+                                    $('#content-pencarian-mahasiswa').html(`
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-10">
+                                                <div class="card m-5">
+                                                    <h5 class="card-header">` + mhs.Mahasiswa_Nama + `</h5>
+                                                    <div class="card-body">
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-md-6 pt-3 mb-3">
+                                                                <img width="50" class="rounded-circle" src="` + BASE_URL + `assets/images/avatars/` + ((mhs.Mahasiswa_Foto == '') ? 'student.png' : mhs.Mahasiswa_Foto) + `" alt="avatar">
+                                                                <div class="widget-heading">` + mhs.Mahasiswa_Nama + `</div>
+                                                                <div class="widget-subheading opacity-7">` + mhs.Mahasiswa_Npm + `</div>
+                                                               
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <p class="text-dark">` + mhs.Mahasiswa_Jurusan + ` - ` + mhs.Mahasiswa_Tahun_Angkatan + `</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 pt-3 mb3">
+                                                                <form method="POST" class="needs-validation" novalidate>
+                                                                    <div class="form-row">
+                                                                        <div class="col-md-12 mb-3">
+                                                                            <label for="input_emoney">Jumlah Topup</label>
+                                                                            <input type="number" class="form-control" id="input_emoney" placeholder="Rp.xx.xxx..." required>
+                                                                            <small id="passwordHelpBlock" class="form-text text-muted">
+                                                                                Silahkan isikan dengan menggunakan angka, minimal topup adalah Rp. 10.000
+                                                                            </small>
+                                                                            <div class="invalid-tooltip pesan_error">
+                                                                                <!-- ======= MAIN CONTENT ======== -->
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-3 mb-3">
+                                                                            <button type="button" class="btn_topup_cancel btn btn-secondary btn-block">Cancel</button>
+                                                                        </div>
+                                                                        <div class="col-md-3 mb-3">
+                                                                            <button type="submit" class="btn_topup btn btn-outline-success btn-transition btn-block">Top Up</button>
+                                                                        </div>  
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    `);
+
+                                    // #region TOPUP E-MONEY FUNGTION
+                                    $('.btn_topup').on('click', function (event) {
+                                        if ($('#input_emoney').val() == '') {
+                                            $('#input_emoney').removeClass('is-invalid');
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                            $('.pesan_error').text('Maaf, Silakan isikan nilai topup terlebih dahulu!');
+                                            $('#input_emoney').addClass('is-invalid');
+                                        } else if ($('#input_emoney').val() < 10000) {
+                                            $('#input_emoney').removeClass('is-invalid');
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                            $('.pesan_error').text('Maaf, nilai yang anda masukkan kurang dari 10.000');
+                                            $('#input_emoney').addClass('is-invalid');
+                                        } else {
+                                            $('#input_emoney').removeClass('is-invalid');
+                                            event.preventDefault();
+                                            $('#input_emoney').addClass('is-valid');
+
+                                            $.ajax({
+                                                url: "http://" + URL_API + "/API-E-Money-App/public/moneys/insert/",
+                                                type: "POST",
+                                                dataType: "JSON",
+                                                data: {
+                                                    Mahasiswa_Id: mhs.Mahasiswa_Id,
+                                                    Mahasiswa_Saldo: (parseInt(mhs.Mahasiswa_Saldo) + parseInt($('#input_emoney').val())),
+                                                    Money_Mahasiswa_Npm: mhs.Mahasiswa_Npm,
+                                                    Money_Nominal: $('#input_emoney').val(),
+                                                    Money_Created_By: $('#User_Nama').val()
+                                                },
+                                                success: function (r) {
+                                                    if (r.Status_Code == 200) {
+                                                        Swal.fire({
+                                                            type: 'success',
+                                                            title: 'Berhasil',
+                                                            text: r.Message
+                                                        });
+                                                        $('#content-pencarian-mahasiswa').html('');
+                                                    } else {
+                                                        Swal.fire({
+                                                            type: 'error',
+                                                            title: 'Oops...',
+                                                            text: r.Message
+                                                        });
+                                                    }
+                                                },
+                                                error: function () {
+                                                    Swal.fire({
+                                                        type: 'error',
+                                                        title: 'Oops...',
+                                                        text: 'Sorry, your request has blocked, please check your connection!'
+                                                    });
+                                                }
+                                            })
+                                        }
+                                    });
+                                    // #endregion =============================================
+
+                                    $('.btn_topup_cancel').on('click', function () {
+                                        $('#content-pencarian-mahasiswa').html('');
+                                    });
+
+                                } else {
+                                    Swal.fire({
+                                        type: 'error',
+                                        title: 'Oops...',
+                                        text: r.Message
+                                    });
+                                }
+                            },
+                            error: function () {
+                                Swal.fire({
+                                    type: 'error',
+                                    title: 'Oops...',
+                                    text: 'Sorry, your request has blocked, please check your connection!'
+                                });
+                            }
+                        });
+
+                    });
+                },
+                error: function () {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Sorry, your request has blocked, please check your connection!'
+                    });
+                }
+            });
+
+
+        } else {
+            $('.myDropdown').html('');
+            $('.myDropdown').hide();
+        }
+    });
+    // ================================================
 });
+//#endregion =====================
 
 $('#report_penjualan').on('click', function () {
     nonactiveSidebar();
@@ -1816,6 +2068,180 @@ $('#cetak_kartu').on('click', function () {
     $('#title_page').text('Cetak Kartu KTM');
     $('#content').html('');
 
+    $('#content').html(`
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-card mb-3 card">
+
+                <div class="card-body">
+                    <div class="alert alert-success fade show mb-3">
+                        <h5 class="alert-heading">Selamat Datang!</h5>
+                        <p>Silakan lakukan pencarian berdasarkan NPM Mahasiswa untuk melakukan cetak kartu tanda mahasiswa.</p>
+                    </div>
+                    <div class="search-wrapper p-3">
+                        <div class="input-holder">
+                            <input type="text" class="search-input" id="search_npm" name="search_npm" placeholder="Type to search">
+                            <button class="search-icon"><span></span></button>
+                        </div>
+                        <button class="close ml-3"></button>
+                        
+                        <!-- ======= DROPDOWN SEARCH ======== -->
+                        <a id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                        <div tabindex="-1" aria-labelledby="dropdownMenuButton" class="dropdown-menu myDropdown"></div>   
+                        <!-- ======= /DROPDOWN SEARCH ======== -->                 
+                    </div>
+                </div>
+
+                <div class="d-block text-center card-footer">
+                    <div id="content-pencarian-mahasiswa"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    `);
+
+    // #region ANIMASI SEARCH 
+    $(".search-icon").click(function () {
+        $(this).parent().parent().addClass("active");
+    });
+
+    $(".search-wrapper .close").click(function () {
+        $(this).parent().removeClass("active");
+    });
+    // #endregion END OF ANIMASI SEARCH 
+
+    // PENCARIAN MAHASISWA BY NPM UNTUK MELAKUKAN TOPUP
+    $('#search_npm').on('keyup', function () {
+        // console.log($('#search_npm').val());
+        if ($('#search_npm').val() != '') {
+            $.ajax({
+                url: "http://" + URL_API + "/API-E-Money-App/public/mahasiswas/getDataLikeNpm/",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    Mahasiswa_Npm: $('#search_npm').val()
+                },
+                success: function (r) {
+                    var m = r.Mahasiswa;
+                    var item = '';
+                    if (m.length > 0) {
+                        $('.myDropdown').html('');
+                        $('.dropdownMenuButton').dropdown('toggle');
+                        for (let i = 0; i < m.length; i++) {
+                            item += `
+                            <button type="button" tabindex="0" class="dropdown-item search-item" data-npm="` + m[i].Mahasiswa_Npm + `" data-id="` + m[i].Mahasiswa_Id + `">
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left mr-3">
+                                            <div class="widget-content-left">
+                                                <img width="40" class="rounded-circle" src="` + BASE_URL + `assets/images/avatars/` + ((m[i].Mahasiswa_Foto == '') ? 'student.png' : m[i].Mahasiswa_Foto) + `" alt="avatar">
+                                            </div>
+                                        </div>
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading">` + m[i].Mahasiswa_Nama + `</div>
+                                            <div class="widget-subheading opacity-7">` + m[i].Mahasiswa_Npm + `</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>`;
+                        }
+                        $('.myDropdown').html(item);
+                        $('.myDropdown').show();
+                        $('.dropdownMenuButton').click();
+
+                    } else {
+                        $('.myDropdown').html('');
+                        $('[data-toggle="dropdown"]').parent().removeClass('open');
+                        $('.myDropdown').hide();
+                    }
+
+                    $('.search-item').on('click', function () {
+                        $('.myDropdown').hide();
+                        $('#search_npm').val('');
+                        $('.close').click();
+
+                        var Mahasiswa_Npm = $(this).data('npm');
+                        $('#content-pencarian-mahasiswa').html('');
+                        $.ajax({
+                            url: "http://" + URL_API + "/API-E-Money-App/public/mahasiswas/getDataByNpm/",
+                            type: "POST",
+                            dataType: "JSON",
+                            data: {
+                                Mahasiswa_Npm: Mahasiswa_Npm
+                            },
+                            success: function (r) {
+                                if (r.Status_Code == 200) {
+                                    var mhs = r.Mahasiswa;
+                                    $('#content-pencarian-mahasiswa').html(`
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-12">
+                                                <div class="card m-5">
+                                                    <h5 class="card-header">` + mhs.Mahasiswa_Nama + `</h5>
+                                                    <div class="card-body">
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-md-6 pt-3 mb-3">
+                                                                <img width="50" class="rounded-circle" src="` + BASE_URL + `assets/images/avatars/` + ((mhs.Mahasiswa_Foto == '') ? 'student.png' : mhs.Mahasiswa_Foto) + `" alt="avatar">
+                                                                <div class="widget-heading">` + mhs.Mahasiswa_Nama + `</div>
+                                                                <div class="widget-subheading opacity-7">` + mhs.Mahasiswa_Npm + `</div>
+                                                               
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <p class="text-dark">` + mhs.Mahasiswa_Jurusan + ` - ` + mhs.Mahasiswa_Tahun_Angkatan + `</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row justify-content-center">
+                                                                    <div class="col-md-5">
+                                                                        <button class="btn btn-primary btn-block"><i class="fa fa-file-pdf"></i>  Preview</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    `);
+
+                                    $('.btn_topup_cancel').on('click', function () {
+                                        $('#content-pencarian-mahasiswa').html('');
+                                    });
+
+                                } else {
+                                    Swal.fire({
+                                        type: 'error',
+                                        title: 'Oops...',
+                                        text: r.Message
+                                    });
+                                }
+                            },
+                            error: function () {
+                                Swal.fire({
+                                    type: 'error',
+                                    title: 'Oops...',
+                                    text: 'Sorry, your request has blocked, please check your connection!'
+                                });
+                            }
+                        });
+
+                    });
+                },
+                error: function () {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Sorry, your request has blocked, please check your connection!'
+                    });
+                }
+            });
+
+
+        } else {
+            $('.myDropdown').html('');
+            $('.myDropdown').hide();
+        }
+    });
+    // ================================================
 });
 
 

@@ -665,6 +665,181 @@ $('#cetak_kartu').on('click', function () {
     $('#cetak_kartu').addClass('mm-active');
     $('#title_page').text('Cetak Kartu Tanda Mahasiswa');
     $('#content').html('');
+
+    $('#content').html(`
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-card mb-3 card">
+
+                <div class="card-body">
+                    <div class="alert alert-success fade show mb-3">
+                        <h5 class="alert-heading">Selamat Datang!</h5>
+                        <p>Silakan lakukan pencarian berdasarkan NPM Mahasiswa untuk melakukan cetak kartu tanda mahasiswa.</p>
+                    </div>
+                    <div class="search-wrapper p-3">
+                        <div class="input-holder">
+                            <input type="text" class="search-input" id="search_npm" name="search_npm" placeholder="Type to search">
+                            <button class="search-icon"><span></span></button>
+                        </div>
+                        <button class="close ml-3"></button>
+                        
+                        <!-- ======= DROPDOWN SEARCH ======== -->
+                        <a id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                        <div tabindex="-1" aria-labelledby="dropdownMenuButton" class="dropdown-menu myDropdown"></div>   
+                        <!-- ======= /DROPDOWN SEARCH ======== -->                 
+                    </div>
+                </div>
+
+                <div class="d-block text-center card-footer">
+                    <div id="content-pencarian-mahasiswa"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    `);
+
+    // #region ANIMASI SEARCH 
+    $(".search-icon").click(function () {
+        $(this).parent().parent().addClass("active");
+    });
+
+    $(".search-wrapper .close").click(function () {
+        $(this).parent().removeClass("active");
+    });
+    // #endregion END OF ANIMASI SEARCH 
+
+    // PENCARIAN MAHASISWA BY NPM UNTUK MELAKUKAN TOPUP
+    $('#search_npm').on('keyup', function () {
+        // console.log($('#search_npm').val());
+        if ($('#search_npm').val() != '') {
+            $.ajax({
+                url: "http://" + URL_API + "/API-E-Money-App/public/mahasiswas/getDataLikeNpm/",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    Mahasiswa_Npm: $('#search_npm').val()
+                },
+                success: function (r) {
+                    var m = r.Mahasiswa;
+                    var item = '';
+                    if (m.length > 0) {
+                        $('.myDropdown').html('');
+                        $('.dropdownMenuButton').dropdown('toggle');
+                        for (let i = 0; i < m.length; i++) {
+                            item += `
+                            <button type="button" tabindex="0" class="dropdown-item search-item" data-npm="` + m[i].Mahasiswa_Npm + `" data-id="` + m[i].Mahasiswa_Id + `">
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left mr-3">
+                                            <div class="widget-content-left">
+                                                <img width="40" class="rounded-circle" src="` + BASE_URL + `assets/images/avatars/` + ((m[i].Mahasiswa_Foto == '') ? 'student.png' : m[i].Mahasiswa_Foto) + `" alt="avatar">
+                                            </div>
+                                        </div>
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading">` + m[i].Mahasiswa_Nama + `</div>
+                                            <div class="widget-subheading opacity-7">` + m[i].Mahasiswa_Npm + `</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>`;
+                        }
+                        $('.myDropdown').html(item);
+                        $('.myDropdown').show();
+                        $('.dropdownMenuButton').click();
+
+                    } else {
+                        $('.myDropdown').html('');
+                        $('[data-toggle="dropdown"]').parent().removeClass('open');
+                        $('.myDropdown').hide();
+                    }
+
+                    $('.search-item').on('click', function () {
+                        $('.myDropdown').hide();
+                        $('#search_npm').val('');
+                        $('.close').click();
+
+                        var Mahasiswa_Npm = $(this).data('npm');
+                        $('#content-pencarian-mahasiswa').html('');
+                        $.ajax({
+                            url: "http://" + URL_API + "/API-E-Money-App/public/mahasiswas/getDataByNpm/",
+                            type: "POST",
+                            dataType: "JSON",
+                            data: {
+                                Mahasiswa_Npm: Mahasiswa_Npm
+                            },
+                            success: function (r) {
+                                if (r.Status_Code == 200) {
+                                    var mhs = r.Mahasiswa;
+                                    $('#content-pencarian-mahasiswa').html(`
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-12">
+                                                <div class="card m-5">
+                                                    <h5 class="card-header">` + mhs.Mahasiswa_Nama + `</h5>
+                                                    <div class="card-body">
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-md-6 pt-3 mb-3">
+                                                                <img width="50" class="rounded-circle" src="` + BASE_URL + `assets/images/avatars/` + ((mhs.Mahasiswa_Foto == '') ? 'student.png' : mhs.Mahasiswa_Foto) + `" alt="avatar">
+                                                                <div class="widget-heading">` + mhs.Mahasiswa_Nama + `</div>
+                                                                <div class="widget-subheading opacity-7">` + mhs.Mahasiswa_Npm + `</div>
+                                                               
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <p class="text-dark">` + mhs.Mahasiswa_Jurusan + ` - ` + mhs.Mahasiswa_Tahun_Angkatan + `</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row justify-content-center">
+                                                                    <div class="col-md-5">
+                                                                        <button class="btn btn-primary btn-block"><i class="fa fa-file-pdf"></i>  Preview</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    `);
+
+                                    $('.btn_topup_cancel').on('click', function () {
+                                        $('#content-pencarian-mahasiswa').html('');
+                                    });
+
+                                } else {
+                                    Swal.fire({
+                                        type: 'error',
+                                        title: 'Oops...',
+                                        text: r.Message
+                                    });
+                                }
+                            },
+                            error: function () {
+                                Swal.fire({
+                                    type: 'error',
+                                    title: 'Oops...',
+                                    text: 'Sorry, your request has blocked, please check your connection!'
+                                });
+                            }
+                        });
+
+                    });
+                },
+                error: function () {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Sorry, your request has blocked, please check your connection!'
+                    });
+                }
+            });
+
+
+        } else {
+            $('.myDropdown').html('');
+            $('.myDropdown').hide();
+        }
+    });
+    // ================================================
 });
 
 $('#report_data_mahasiswa').on('click', function () {
@@ -672,6 +847,58 @@ $('#report_data_mahasiswa').on('click', function () {
     $('#report_data_mahasiswa').addClass('mm-active');
     $('#title_page').text('Laporan Data Mahasiswa');
     $('#content').html('');
+
+    $('#content').html(`
+        
+        <div class="row">
+            <div class="col-md-12 col-lg-6">
+                <div class="mb-3 card">
+                    <div class="card-header-tab card-header-tab-animation card-header">
+                        <div class="card-header-title">
+                            <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
+                            Laporan Top Up
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="tabs-eg-77">
+                                <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
+                                    <div class="widget-chat-wrapper-outer">
+                                        <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
+                                            <canvas id="canvas"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-6">
+                <div class="mb-3 card">
+                    <div class="card-header-tab card-header-tab-animation card-header">
+                        <div class="card-header-title">
+                            <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
+                            LAPORAN TOTAL NOMINAL TOP UP
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="tabs-eg-77">
+                                <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
+                                    <div class="widget-chat-wrapper-outer">
+                                        <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
+                                            <canvas id="pie_chart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `);
 });
 
 $('#report_mahasiswa_jurusan').on('click', function () {

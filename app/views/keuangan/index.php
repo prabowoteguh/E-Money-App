@@ -48,12 +48,6 @@
                     </li>
                     <li class="app-sidebar__heading">Data Master</li>
                     <li>
-                        <a id="master_transaksi_emoney" href="javascript:void(0);">
-                            <i class=" metismenu-icon fa fa-money-bill-wave"></i>
-                            Master Data Transaksi E-Money
-                        </a>
-                    </li>
-                    <li>
                         <a id="master_topup_emoney" href="javascript:void(0);">
                             <i class=" metismenu-icon fa fa-coins"></i>
                             Master Data TopUp E-Money
@@ -133,41 +127,62 @@
 
                 <!-- ======= DATA ANALYTIC ======== -->
                 <div class="row">
-                    <div class="col-md-6 col-xl-4">
+                    <div class="col-md-4 col-xl-3">
                         <div class="card mb-3 widget-content bg-midnight-bloom">
                             <div class="widget-content-wrapper text-white">
                                 <div class="widget-content-left">
-                                    <div class="widget-heading">Akuntansi</div>
-                                    <div class="widget-subheading">Data 1 tahun terakhir</div>
+                                    <div class="widget-heading">Total Nominal Top Up</div>
+                                    <div class="widget-subheading">Data hari ini</div>
                                 </div>
                                 <div class="widget-content-right">
-                                    <div class="widget-numbers text-white"><span>45</span></div>
+                                    <div class="text-white">
+                                        <p id="data_hari_topup">45</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-xl-4">
+                    <div class="col-md-4 col-xl-3">
                         <div class="card mb-3 widget-content bg-arielle-smile">
                             <div class="widget-content-wrapper text-white">
                                 <div class="widget-content-left">
-                                    <div class="widget-heading">Manajemen Informatika</div>
-                                    <div class="widget-subheading">Data 1 tahun terakhir</div>
+                                    <div class="widget-heading">Jumlah Mahasiswa Top Up</div>
+                                    <div class="widget-subheading">Data hari ini</div>
                                 </div>
                                 <div class="widget-content-right">
-                                    <div class="widget-numbers text-white"><span>35</span></div>
+                                    <div class="text-white">
+                                        <p id="data_hari_mahasiswa">35</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-xl-4">
+                    <div class="col-md-4 col-xl-3">
                         <div class="card mb-3 widget-content bg-grow-early">
                             <div class="widget-content-wrapper text-white">
                                 <div class="widget-content-left">
-                                    <div class="widget-heading">Perpajakan</div>
-                                    <div class="widget-subheading">Data 1 tahun terakhir</div>
+                                    <div class="widget-heading">Total Nominal Top Up</div>
+                                    <div class="widget-subheading">Data 1 minggu terakhir</div>
                                 </div>
                                 <div class="widget-content-right">
-                                    <div class="widget-numbers text-white"><span>58</span></div>
+                                    <div class="text-white">
+                                        <p id="data_minggu_topup">58</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xl-3">
+                        <div class="card mb-3 widget-content bg-premium-dark">
+                            <div class="widget-content-wrapper text-white">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Jumlah Mahasiswa Top Up</div>
+                                    <div class="widget-subheading">Data 1 minggu terakhir</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="text-white">
+                                        <p id="data_minggu_mahasiswa">58</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
