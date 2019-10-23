@@ -65,30 +65,36 @@
                             Master Mahasiswa
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a id="master_produk" href="javascript:void(0);">
                             <i class="metismenu-icon fa fa-box"></i>
                             Master Products
                         </a>
-                    </li>
+                    </li> -->
 
                     <li class="app-sidebar__heading">Data Transaksi</li>
-                    <li>
+                    <!-- <li>
                         <a id="tr_penjualan" href="javascript:void(0);">
                             <i class="metismenu-icon fa fa-shopping-cart"></i>
                             Penjualan
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a id="tr_eMoney" href="javascript:void(0);">
                             <i class="metismenu-icon fa fa-wallet"></i>
                             Topup E-Money
                         </a>
                     </li>
+                    <li>
+                        <a id="cetak_kartu" href="javascript:void(0);">
+                            <i class="metismenu-icon fa fa-id-card">
+                            </i>Cetak Kartu Mahasiswa
+                        </a>
+                    </li>
 
                     <li class="app-sidebar__heading">Laporan</li>
                     <li>
-                        <a id="report_penjualan" href="javascript:void(0);">
+                        <!-- <a id="report_penjualan" href="javascript:void(0);">
                             <i class="metismenu-icon fa fa-chart-bar"></i>
                             Laporan Penjualan
                             <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
@@ -152,13 +158,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                    <li>
-                        <a id="cetak_kartu" href="javascript:void(0);">
-                            <i class="metismenu-icon fa fa-id-card">
-                            </i>Cetak Kartu Mahasiswa
-                        </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -320,16 +320,10 @@
                 <!-- /======= DATA ANALYTIC ======== -->
 
                 <!-- ====== TABLE USERS ====== -->
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-12">
                         <div class="main-card mb-3 card">
                             <div class="card-header">Active Users
-                                <!-- <div class="btn-actions-pane-right">
-                                    <div role="group" class="btn-group-sm btn-group">
-                                        <button class="active btn btn-focus">Last Week</button>
-                                        <button class="btn btn-focus">All Month</button>
-                                    </div>
-                                </div> -->
                             </div>
                             <div class="table-responsive">
                                 <table class="align-middle mb-0 table table-borderless table-striped table-hover">
@@ -451,7 +445,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- ====== /TABLE USERS ====== -->
             </div>
 
