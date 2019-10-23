@@ -1,6 +1,36 @@
 // ================= ADMIN KEUANGAN =====================
 // console.log('Keuangan');
 
+$(function Dashboard() {
+    $.ajax({
+        url: "http://localhost:8080/API-E-Money-App/public/moneys/laporanPerHari",
+        type: "GET",
+        dataType: "JSON",
+        data: {
+            // 
+        },
+        success: function (r) {
+            var data = r.Money;
+            $('#data_hari_topup').text('Rp. ' + data.Total_Nominal);
+            $('#data_hari_mahasiswa').text(data.Total_Mahasiswa);
+        }
+    });
+
+    $.ajax({
+        url: "http://localhost:8080/API-E-Money-App/public/moneys/laporanPerMinggu",
+        type: "GET",
+        dataType: "JSON",
+        data: {
+            // 
+        },
+        success: function (r) {
+            var data = r.Money;
+            $('#data_minggu_topup').text('Rp. ' + data.Total_Nominal);
+            $('#data_minggu_mahasiswa').text(data.Total_Mahasiswa);
+        }
+    });
+});
+
 $('#main_dashboard').on('click', function () {
     nonactiveSidebar();
     $('#main_dashboard').addClass('mm-active');
@@ -279,6 +309,11 @@ $('#topup_emoney').on('click', function () {
                                                                 <div class="row">
                                                                     <div class="col-sm-12">
                                                                         <p class="text-dark">` + mhs.Mahasiswa_Jurusan + ` - ` + mhs.Mahasiswa_Tahun_Angkatan + `</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <p class="text-dark">Saldo Terakhir : Rp. ` + mhs.Mahasiswa_Saldo + `</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
