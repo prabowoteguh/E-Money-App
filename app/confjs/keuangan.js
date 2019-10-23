@@ -1,6 +1,4 @@
 // ================= ADMIN KEUANGAN =====================
-const URL_API = '192.168.10.172:8080';
-const BASE_URL = 'http://localhost/E-Money-App/public/';
 // console.log('Keuangan');
 
 $('#main_dashboard').on('click', function () {
@@ -33,7 +31,127 @@ $('#master_topup_emoney').on('click', function () {
     $('#master_topup_emoney').addClass('mm-active');
     $('#title_page').text('Master Data TopUp E-Money');
     $('#content').html('');
+
+    $.ajax({
+        url: "http://" + URL_API + "/API-E-Money-App/public/moneys/show/",
+        type: "GET",
+        // dataType: "JSON",
+        data: {
+            // 
+        },
+        success: function (r) {
+            if (r.Status_Code == 200) {
+                var data = r.Moneys;
+                var table = '';
+
+                for (let i = 0; i < data.length; i++) {
+                    table += `
+                        <tr>
+                            <td class="text-center text-muted"> #` + (i + 1) + `</td>
+                            <td>
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left mr-3">
+                                            <div class="widget-content-left">
+                                                <img width="40" class="rounded-circle" src="` + BASE_URL + `assets/images/avatars/` + ((data[i].Mahasiswa_Foto == '') ? 'student.png' : data[i].Mahasiswa_Foto) + `" alt="avatar">
+                                            </div>
+                                        </div>
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading">` + data[i].Mahasiswa_Nama + `</div>
+                                            <div class="widget-subheading opacity-7">` + data[i].Mahasiswa_Npm + `</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>` + data[i].Mahasiswa_Jurusan + ` - ` + data[i].Mahasiswa_Tahun_Angkatan + `</td> 
+                            <td>` + data[i].Money_Nominal + `</td> 
+                            <td>` + data[i].Money_Created_By + `</td> 
+                            <td>` + data[i].Money_Created_Date + `</td> 
+                            <td class="text-center">
+                                <div class="badge badge-` + ((data[i].Money_Deleted_Status == 0) ? 'success' : 'danger') + `">` + ((data[i].Money_Deleted_Status == 0) ? 'Sukses' : 'Terhapus') + `</div>
+                            </td> 
+                            <!-- <td class="text-center">
+                                <button type="button" data-Money="` + data[i].Money_Nama + `" data-id="` + data[i].Money_Id + `" class="btn btn-danger btn-sm hapus_Money" ` + ((data[i].Money_Deleted_Status == 0) ? '' : 'disabled') + `><i class="fa fa-trash"></i> Hapus</button>
+                            </td> -->
+                        </tr>
+
+                    `;
+                }
+
+                $('#content').html(`
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="main-card mb-3 card">
+                            <div class="card-header">Data Transaksi Top Up E-Money
+                                <div class="btn-actions-pane-right">
+                                    <div role="group" class="btn-group-sm btn-group">
+                                        <!-- <button class="btn btn-success" id="btn_tambah_mahasiswa" data-backdrop="false" data-toggle="modal" data-target="#modal_tambah_mahasiswa"><i class="fa fa-plus"></i> Tambah Data Mahasiswa</button> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="">
+                                    <div class="table-responsive">
+                                        <table id="table_topup" class="display nowrap align-middle mb-0 table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="text-center">#</th>
+                                                    <th scope="col">Nama Mahasiswa</th>
+                                                    <th scope="col">Jurusan</th>
+                                                    <th scope="col">Nominal TopUp</th>
+                                                    <th scope="col">Admin</th>
+                                                    <th scope="col">Tanggal Top Up</th>
+                                                    <th scope="col"  class="text-center">Status</th> 
+                                                    <!-- <th scope="col" class="text-center">Aksi</th> -->
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                ` + table + `
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th scope="col" class="text-center">#</th>
+                                                    <th scope="col">Nama Mahasiswa</th>
+                                                    <th scope="col">Jurusan</th>
+                                                    <th scope="col">Nominal TopUp</th>
+                                                    <th scope="col">Admin</th>
+                                                    <th scope="col">Tanggal Top Up</th>
+                                                    <th scope="col"  class="text-center">Status</th> 
+                                                    <!-- <th scope="col" class="text-center">Aksi</th> -->
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-block text-center card-footer">
+                                <div class="text-center"> <h5></h5> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `);
+
+            } else {
+                Swal.fire({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: r.Message
+                });
+            }
+            // data table
+            $('#table_mahasiswa').DataTable();
+        },
+        error: function () {
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: r.Message
+            });
+        }
+    });
 });
+
 
 $('#topup_emoney').on('click', function () {
     nonactiveSidebar();
@@ -84,6 +202,7 @@ $('#topup_emoney').on('click', function () {
     });
     // #endregion END OF ANIMASI SEARCH 
 
+    // PENCARIAN MAHASISWA BY NPM UNTUK MELAKUKAN TOPUP
     $('#search_npm').on('keyup', function () {
         // console.log($('#search_npm').val());
         if ($('#search_npm').val() != '') {
@@ -289,7 +408,7 @@ $('#topup_emoney').on('click', function () {
             $('.myDropdown').hide();
         }
     });
-
+    // ================================================
 });
 
 
@@ -299,6 +418,104 @@ $('#report_eMoney').on('click', function () {
     $('#title_page').text('Laporan E-Money');
     $('#content').html('');
 
+    $('#content').html(`
+        
+        <div class="row">
+            <div class="col-md-12 col-lg-6">
+                <div class="mb-3 card">
+                    <div class="card-header-tab card-header-tab-animation card-header">
+                        <div class="card-header-title">
+                            <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
+                            Laporan Top Up
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="tabs-eg-77">
+                                <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
+                                    <div class="widget-chat-wrapper-outer">
+                                        <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
+                                            <canvas id="canvas"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-6">
+                <div class="mb-3 card">
+                    <div class="card-header-tab card-header-tab-animation card-header">
+                        <div class="card-header-title">
+                            <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
+                            LAPORAN TOTAL NOMINAL TOP UP
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="tabs-eg-77">
+                                <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
+                                    <div class="widget-chat-wrapper-outer">
+                                        <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
+                                            <canvas id="pie_chart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `);
+
+    var t = document.getElementById("chart-area").getContext("2d");
+    window.myPie = new r.a(t, s);
+
+    // set the data
+    var data = [{
+            x: "White",
+            value: 223553265
+        },
+        {
+            x: "Black or African American",
+            value: 38929319
+        },
+        {
+            x: "American Indian and Alaska Native",
+            value: 2932248
+        },
+        {
+            x: "Asian",
+            value: 14674252
+        },
+        {
+            x: "Native Hawaiian and Other Pacific Islander",
+            value: 540013
+        },
+        {
+            x: "Some Other Race",
+            value: 19107368
+        },
+        {
+            x: "Two or More Races",
+            value: 9009073
+        }
+    ];
+
+    // create the chart
+    var chart = anychart.pie();
+
+    // set the chart title
+    // chart.title("Population by Race for the United States: 2010 Census");
+
+    // add the data
+    chart.data(data);
+
+    // display the chart in the container
+    chart.container('pie_chart');
+    chart.draw();
 });
 
 $('#report_harian_topup').on('click', function () {

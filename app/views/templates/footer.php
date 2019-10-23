@@ -83,7 +83,7 @@
                <?php
                 } else if ($_SESSION['data_user']->Role_Nama == 'Akademik') {
                     ?>
-                   <script src="<?= BASE_URL ?>../app/confjs/akademikk.js"></script>
+                   <script src="<?= BASE_URL ?>../app/confjs/akademik.js"></script>
 
                <?php
                 } else if ($_SESSION['data_user']->Role_Nama == 'Admin Kantin') {

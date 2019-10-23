@@ -1,6 +1,6 @@
 // ================= LOGIN FUNCTION =================
-const URL_API = '192.168.10.172:8080';
-const BASE_URL = 'http://localhost/E-Money-App/public/';
+
+// console.log('OKLOG');
 
 $('#btn_login').on('click', function (e) {
     e.preventDefault();
@@ -51,4 +51,3 @@ $('#btn_login').on('click', function (e) {
     }
 });
 // ================= /LOGIN FUNCTION =================
-console.log('OK');

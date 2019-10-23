@@ -1,6 +1,4 @@
 // ================= SUPER ADMIN =====================
-const URL_API = '192.168.10.172:8080';
-const BASE_URL = 'http://localhost/E-Money-App/public/';
 
 $('#main_dashboard').on('click', function () {
     nonactiveSidebar();

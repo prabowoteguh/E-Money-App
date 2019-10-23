@@ -1,6 +1,4 @@
 // ================= ADMIN AKADEMIK =====================
-const URL_API = '192.168.10.172:8080';
-const BASE_URL = 'http://localhost/E-Money-App/public/';
 console.log('Akademik');
 
 $('#main_dashboard').on('click', function () {
@@ -25,7 +23,7 @@ $('#master_mahasiswa').on('click', function () {
     $('#title_page').text('Master Data Mahasiswa');
     $('#content').html('');
 
-    Mahasiswa();
+    // Mahasiswa();
 });
 
 function Mahasiswa() {
