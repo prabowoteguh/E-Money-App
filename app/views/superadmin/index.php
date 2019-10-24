@@ -94,7 +94,7 @@
 
                     <li class="app-sidebar__heading">Laporan</li>
                     <li>
-                        <!-- <a id="report_penjualan" href="javascript:void(0);">
+                        <a id="report_penjualan" href="javascript:void(0);" class="btn disabled">
                             <i class="metismenu-icon fa fa-chart-bar"></i>
                             Laporan Penjualan
                             <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
@@ -127,7 +127,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a id="report_eMoney" href="javascript:void(0);">
+                        <a id="report_eMoney" href="javascript:void(0);" class="btn disabled">
                             <i class="metismenu-icon fa fa-chart-line"></i>
                             Laporan Topup E-Money
                             <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
@@ -158,7 +158,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li> -->
+                    </li>
                 </ul>
             </div>
         </div>
@@ -681,6 +681,25 @@
             </div>
             <!-- /Modal Tambah User -->
 
+            <!-- Modal Print Preview KTM -->
+            <div class="modal fade bd-example-modal-lg mt-5" id="modal_print_preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Print Preview</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body body_preview">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //Modal Print Preview KTM -->
 
             <!-- ======= GRAPHIC CHART ======== -->
             <!-- <div class="row">
