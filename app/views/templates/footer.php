@@ -11,7 +11,7 @@
                            <div class="app-footer-right">
                                <ul class="nav">
                                    <li class="nav-item">
-                                       Version <strong>Beta Test</strong> 1.0
+                                       Version <strong>Beta</strong> 1.0
                                    </li>
                                    <!-- <li class="nav-item">
                                        <a href="javascript:void(0);" class="nav-link">
