@@ -64,7 +64,7 @@
 
                     <li class="app-sidebar__heading">Laporan</li>
                     <li>
-                        <a id="report_eMoney" href="javascript:void(0);">
+                        <a id="report_eMoney" href="javascript:void(0);" class="btn disabled" aria-disabled="true">
                             <i class="metismenu-icon fa fa-chart-line"></i>
                             Laporan Topup E-Money
                             <!-- <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i> -->

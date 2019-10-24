@@ -11,7 +11,7 @@ $(function Dashboard() {
         },
         success: function (r) {
             var data = r.Money;
-            $('#data_hari_topup').text('Rp. ' + data.Total_Nominal);
+            $('#data_hari_topup').text('Rp. ' + ((data.Total_Nominal == null) ? 0 : data.Total_Nominal));
             $('#data_hari_mahasiswa').text(data.Total_Mahasiswa);
         }
     });

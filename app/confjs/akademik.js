@@ -789,7 +789,7 @@ $('#cetak_kartu').on('click', function () {
                                                                 </div>
                                                                 <div class="row justify-content-center">
                                                                     <div class="col-md-5">
-                                                                        <button class="btn btn-primary btn-block"><i class="fa fa-file-pdf"></i>  Preview</button>
+                                                                        <button class="btn btn-primary btn-block btn_print_preview" data-backdrop="false" data-toggle="modal" data-target="#modal_print_preview"><i class="fa fa-file-pdf"></i>  Preview</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -803,6 +803,11 @@ $('#cetak_kartu').on('click', function () {
 
                                     $('.btn_topup_cancel').on('click', function () {
                                         $('#content-pencarian-mahasiswa').html('');
+                                    });
+
+                                    // Print preview generate pdf
+                                    $('.btn_print_preview').on('click', function () {
+                                        $('.body_preview').html('<iframe src="' + BASE_URL + 'akademikcontroller/cetak/&Mahasiswa_Npm=' + mhs.Mahasiswa_Npm + '&Mahasiswa_Nama=' + mhs.Mahasiswa_Nama + '&Mahasiswa_Jurusan=' + mhs.Mahasiswa_Jurusan + '&Mahasiswa_Tahun Angkatan=' + mhs.Mahasiswa_Tahun_Angkatan + '&Mahasiswa_Foto=' + mhs.Mahasiswa_Foto + '" width="100%" height="400px"></iframe>');
                                     });
 
                                 } else {
